@@ -49,9 +49,10 @@ export function Vide({ texte, icone = "recherche" }) {
 
 // ---------- Badges ----------
 
-// Statut -> [classe de couleur, icône, libellé] : la couleur n'est jamais seule
+// Statut -> [classe de couleur, icône, libellé] : la couleur n'est jamais seule.
+// La classe porte le nom de la variable CSS de la teinte (--neutre, --attention…).
 const STATUTS = {
-  Declare: ["info", "○", "Déclaré"],
+  Declare: ["neutre", "○", "Déclaré"],
   EnExpertise: ["attention", "◐", "En expertise"],
   Indemnise: ["bon", "✓", "Indemnisé"],
   Refuse: ["critique", "✕", "Refusé"],
@@ -59,6 +60,12 @@ const STATUTS = {
 };
 
 export const libelleStatut = (s) => STATUTS[s]?.[2] ?? s;
+
+/** Couleur et icône d'un statut, pour un graphique : les mêmes que sur les badges. */
+export function marqueStatut(s) {
+  const [classe, icone] = STATUTS[s] ?? ["neutre", "•"];
+  return { couleur: `var(--${classe})`, icone };
+}
 
 export function StatutBadge({ statut }) {
   const [classe, icone, libelle] = STATUTS[statut] ?? ["neutre", "•", statut];
@@ -77,17 +84,17 @@ export function ValiditeBadge({ valide }) {
   );
 }
 
-/** Badges des faits déduits par le raisonneur (règle SWRL et classe définie). */
+/** Badges des faits déduits par le raisonneur (règle SWRL et classe définie) : teinte violette commune. */
 export function Deductions({ s }) {
   return (
     <span className="pile">
       {s.grave && (
-        <span className="badge critique" title="Déduit par la règle SWRL : le sinistre cause un dommage corporel">
+        <span className="badge grave" title="Déduit par la règle SWRL : le sinistre cause un dommage corporel">
           <span aria-hidden="true">⚠</span> Grave
         </span>
       )}
       {s.couvert ? (
-        <span className="badge info" title="Déduit de la classe définie SinistreCouvert (au moins une garantie)">
+        <span className="badge deduit" title="Déduit de la classe définie SinistreCouvert (au moins une garantie)">
           <span aria-hidden="true">☂</span> Couvert
         </span>
       ) : (
