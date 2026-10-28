@@ -1,0 +1,12 @@
+# INFERENCE : sinistres classes "graves" par la regle SWRL (dommage corporel)
+PREFIX :     <http://www.semanticweb.org/ontologies/assurance-sinistres#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?sinistre ?date ?description ?statut ?assure WHERE {
+  ?sinistre a :SinistreGrave ; :dateSinistre ?date ; :descriptionSinistre ?description ;
+            :statutSinistre ?statut .
+  ?a :declareSinistre ?sinistre ; :prenom ?p ; :nom ?n .
+  BIND(CONCAT(?p, " ", ?n) AS ?assure)
+}
+ORDER BY ?date

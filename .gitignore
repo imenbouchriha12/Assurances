@@ -1,0 +1,50 @@
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# ---------- Node / front-end ----------
+node_modules/
+dist/
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ---------- Secrets / configuration locale ----------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ---------- Apache Jena Fuseki ----------
+# Base TDB2 (binaire, ~200 Mo) : se reconstruit avec recharger_donnees.bat
+fuseki/databases/
+*.lock
+# Serveur Fuseki 5.6.0 (54 Mo) : à télécharger sur https://jena.apache.org/download/
+fuseki/fuseki-server.jar
+# Données d'exécution générées par Fuseki
+fuseki/run/databases/
+fuseki/run/backups/
+fuseki/run/logs/
+fuseki/run/system/
+fuseki/run/system_files/
+fuseki/run/configuration/
+
+# ---------- Logs ----------
+*.log
+logs/
+
+# ---------- IDE / OS ----------
+.vscode/
+.idea/
+.claude/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini

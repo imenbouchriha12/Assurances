@@ -1,0 +1,1502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
+]>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/assurance-sinistres#"
+     xml:base="http://www.semanticweb.org/ontologies/assurance-sinistres"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres">
+        <rdfs:comment xml:lang="fr">Ontologie Assurance et Gestion des Sinistres - Projet Web Semantique. Elle modélise les types de contrats d'assurance, les garanties, les clauses légales, les types de dommages et les barèmes d'indemnisation.</rdfs:comment>
+        <owl:versionInfo>2.1</owl:versionInfo>
+    </owl:Ontology>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Synonymes utilisés par le module NLP pour reconnaître les concepts dans une question -->
+    <owl:AnnotationProperty rdf:about="&skos;altLabel"/>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdfs:Datatype rdf:about="&xsd;date"/>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:ObjectProperty rdf:about="#aPourContrat">
+        <rdfs:domain rdf:resource="#Assure"/>
+        <rdfs:range rdf:resource="#Contrat"/>
+        <rdfs:label xml:lang="fr">a pour contrat</rdfs:label>
+        <rdfs:comment xml:lang="fr">Relie un assuré aux contrats qu'il a souscrits.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">a souscrit</skos:altLabel>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#appliqueFranchise">
+        <rdfs:domain rdf:resource="#Contrat"/>
+        <rdfs:range rdf:resource="#Franchise"/>
+        <rdfs:label xml:lang="fr">applique la franchise</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#assurePar">
+        <owl:inverseOf rdf:resource="#estAssureDe"/>
+        <rdfs:domain rdf:resource="#Contrat"/>
+        <rdfs:range rdf:resource="#Assureur"/>
+        <rdfs:label xml:lang="fr">assuré par</rdfs:label>
+        <rdfs:comment xml:lang="fr">Compagnie d'assurance qui porte le contrat.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#causeDommage">
+        <rdfs:domain rdf:resource="#Sinistre"/>
+        <rdfs:range rdf:resource="#Dommage"/>
+        <rdfs:label xml:lang="fr">cause le dommage</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#concerneContrat">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Sinistre"/>
+        <rdfs:range rdf:resource="#Contrat"/>
+        <rdfs:label xml:lang="fr">concerne le contrat</rdfs:label>
+        <rdfs:comment xml:lang="fr">Contrat au titre duquel le sinistre est déclaré.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#contientClause">
+        <rdfs:domain rdf:resource="#Contrat"/>
+        <rdfs:range rdf:resource="#Clause"/>
+        <rdfs:label xml:lang="fr">contient la clause</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#declareSinistre">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Assure"/>
+        <rdfs:range rdf:resource="#Sinistre"/>
+        <rdfs:label xml:lang="fr">déclare le sinistre</rdfs:label>
+        <rdfs:comment xml:lang="fr">Un sinistre est déclaré par un seul assuré (propriété inverse fonctionnelle).</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#definitBareme">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Assureur"/>
+        <rdfs:range rdf:resource="#BaremeIndemnisation"/>
+        <rdfs:label xml:lang="fr">définit le barème</rdfs:label>
+        <rdfs:comment xml:lang="fr">Chaque compagnie fixe ses propres barèmes ; un barème appartient à un seul assureur (propriété inverse fonctionnelle).</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#estAssureDe">
+        <rdfs:domain rdf:resource="#Assureur"/>
+        <rdfs:range rdf:resource="#Contrat"/>
+        <rdfs:label xml:lang="fr">est l'assureur de</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#estCouvertPar">
+        <rdfs:domain rdf:resource="#Sinistre"/>
+        <rdfs:range rdf:resource="#Garantie"/>
+        <rdfs:label xml:lang="fr">est couvert par</rdfs:label>
+        <skos:altLabel xml:lang="fr">pris en charge par</skos:altLabel>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#estExpertisePar">
+        <rdfs:domain rdf:resource="#Sinistre"/>
+        <rdfs:range rdf:resource="#Expert"/>
+        <rdfs:label xml:lang="fr">est expertisé par</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#estGarantieDe">
+        <owl:inverseOf rdf:resource="#possedeGarantie"/>
+        <rdfs:domain rdf:resource="#Garantie"/>
+        <rdfs:range rdf:resource="#Contrat"/>
+        <rdfs:label xml:lang="fr">est une garantie de</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#estIndemnisePar">
+        <rdfs:domain rdf:resource="#Sinistre"/>
+        <rdfs:range rdf:resource="#Indemnisation"/>
+        <rdfs:label xml:lang="fr">est indemnisé par</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#exclut">
+        <rdfs:domain rdf:resource="#ClauseExclusion"/>
+        <rdfs:range rdf:resource="#Garantie"/>
+        <rdfs:label xml:lang="fr">exclut</rdfs:label>
+        <rdfs:comment xml:lang="fr">Garantie dont la clause d'exclusion limite la couverture.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#possedeGarantie">
+        <rdfs:domain rdf:resource="#Contrat"/>
+        <rdfs:range rdf:resource="#Garantie"/>
+        <rdfs:label xml:lang="fr">possède la garantie</rdfs:label>
+        <skos:altLabel xml:lang="fr">couvre</skos:altLabel>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#proposeGarantie">
+        <rdfs:domain rdf:resource="#Assureur"/>
+        <rdfs:range rdf:resource="#Garantie"/>
+        <rdfs:label xml:lang="fr">propose la garantie</rdfs:label>
+        <rdfs:comment xml:lang="fr">Catalogue de la compagnie : un contrat ne peut contenir que des garanties proposées par son assureur.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">offre</skos:altLabel>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#sAppliqueA">
+        <rdfs:domain rdf:resource="#BaremeIndemnisation"/>
+        <rdfs:range rdf:resource="#Garantie"/>
+        <rdfs:label xml:lang="fr">s'applique à</rdfs:label>
+        <rdfs:comment xml:lang="fr">Garanties pour lesquelles le barème d'indemnisation est utilisé.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#suitBareme">
+        <rdfs:domain rdf:resource="#Indemnisation"/>
+        <rdfs:range rdf:resource="#BaremeIndemnisation"/>
+        <rdfs:label xml:lang="fr">suit le barème</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#travaillePour">
+        <rdfs:domain rdf:resource="#Expert"/>
+        <rdfs:range rdf:resource="#Assureur"/>
+        <rdfs:label xml:lang="fr">travaille pour</rdfs:label>
+        <rdfs:comment xml:lang="fr">Compagnies qui mandatent l'expert : il n'expertise que les sinistres de leurs contrats.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">mandaté par</skos:altLabel>
+    </owl:ObjectProperty>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Personnes et assureurs -->
+
+    <owl:DatatypeProperty rdf:about="#adresse">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Assureur"/>
+                    <rdf:Description rdf:about="#Personne"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="fr">adresse</rdfs:label>
+        <skos:altLabel xml:lang="fr">ville</skos:altLabel>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#cin">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Personne"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="fr">numéro CIN</rdfs:label>
+        <skos:altLabel xml:lang="fr">carte d'identité</skos:altLabel>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#nom">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Personne"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="fr">nom</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#prenom">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Personne"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="fr">prénom</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#raisonSociale">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Assureur"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="fr">raison sociale</rdfs:label>
+        <skos:altLabel xml:lang="fr">nom de la compagnie</skos:altLabel>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#specialite">
+        <rdfs:domain rdf:resource="#Expert"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="fr">spécialité</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <!-- Contrats -->
+
+    <owl:DatatypeProperty rdf:about="#dateDebutContrat">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Contrat"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+        <rdfs:label xml:lang="fr">date de début du contrat</rdfs:label>
+        <skos:altLabel xml:lang="fr">date de souscription</skos:altLabel>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#dateFinContrat">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Contrat"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+        <rdfs:label xml:lang="fr">date de fin du contrat</rdfs:label>
+        <skos:altLabel xml:lang="fr">date d'expiration</skos:altLabel>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#estValide">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Contrat"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+        <rdfs:label xml:lang="fr">est valide</rdfs:label>
+        <rdfs:comment xml:lang="fr">Valeur cohérente avec dateFinContrat à la date du 2026-10-27. Le back-end peut la recalculer avec FILTER(?dateFin &gt;= NOW()).</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#montantPrime">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Contrat"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+        <rdfs:label xml:lang="fr">montant de la prime</rdfs:label>
+        <skos:altLabel xml:lang="fr">cotisation</skos:altLabel>
+        <skos:altLabel xml:lang="fr">prix</skos:altLabel>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#numeroContrat">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Contrat"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="fr">numéro de contrat</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <!-- Garanties, franchises, barèmes -->
+
+    <owl:DatatypeProperty rdf:about="#libelleGarantie">
+        <rdfs:domain rdf:resource="#Garantie"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="fr">libellé de la garantie</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#plafondGarantie">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Garantie"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+        <rdfs:label xml:lang="fr">plafond de la garantie</rdfs:label>
+        <skos:altLabel xml:lang="fr">montant maximum</skos:altLabel>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#montantFranchise">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Franchise"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+        <rdfs:label xml:lang="fr">montant de la franchise</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#libelleBareme">
+        <rdfs:domain rdf:resource="#BaremeIndemnisation"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="fr">libellé du barème</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#tauxIndemnisation">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#BaremeIndemnisation"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="&xsd;float"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="&xsd;float">0.0</xsd:minInclusive>
+                    </rdf:Description>
+                    <rdf:Description>
+                        <xsd:maxInclusive rdf:datatype="&xsd;float">1.0</xsd:maxInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:label xml:lang="fr">taux d'indemnisation</rdfs:label>
+        <rdfs:comment xml:lang="fr">Taux compris entre 0 et 1 (0.8 = 80 %).</rdfs:comment>
+        <skos:altLabel xml:lang="fr">pourcentage</skos:altLabel>
+    </owl:DatatypeProperty>
+
+    <!-- Clauses légales -->
+
+    <owl:DatatypeProperty rdf:about="#libelleClause">
+        <rdfs:domain rdf:resource="#Clause"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="fr">libellé de la clause</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#referenceLegale">
+        <rdfs:domain rdf:resource="#Clause"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="fr">référence légale</rdfs:label>
+        <rdfs:comment xml:lang="fr">Texte de loi ou document contractuel sur lequel repose la clause.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">base légale</skos:altLabel>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#texteClause">
+        <rdfs:domain rdf:resource="#Clause"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="fr">texte de la clause</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <!-- Sinistres, dommages, indemnisations -->
+
+    <owl:DatatypeProperty rdf:about="#dateSinistre">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Sinistre"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+        <rdfs:label xml:lang="fr">date du sinistre</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#descriptionSinistre">
+        <rdfs:domain rdf:resource="#Sinistre"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="fr">description du sinistre</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#lieuSinistre">
+        <rdfs:domain rdf:resource="#Sinistre"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="fr">lieu du sinistre</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#statutSinistre">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Sinistre"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first>Declare</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first>EnExpertise</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&rdf;List"/>
+                                        <rdf:first>Indemnise</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&rdf;List"/>
+                                                <rdf:first>Refuse</rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="&rdf;List"/>
+                                                        <rdf:first>Cloture</rdf:first>
+                                                        <rdf:rest rdf:resource="&rdf;nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:label xml:lang="fr">statut du sinistre</rdfs:label>
+        <rdfs:comment xml:lang="fr">Valeurs possibles : Declare, EnExpertise, Indemnise, Refuse, Cloture.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">état du dossier</skos:altLabel>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#descriptionDommage">
+        <rdfs:domain rdf:resource="#Dommage"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="fr">description du dommage</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#montantEstime">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Dommage"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+        <rdfs:label xml:lang="fr">montant estimé du dommage</rdfs:label>
+        <skos:altLabel xml:lang="fr">coût du dommage</skos:altLabel>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#dateIndemnisation">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Indemnisation"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+        <rdfs:label xml:lang="fr">date d'indemnisation</rdfs:label>
+        <skos:altLabel xml:lang="fr">date de paiement</skos:altLabel>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#montantIndemnisation">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Indemnisation"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+        <rdfs:label xml:lang="fr">montant de l'indemnisation</rdfs:label>
+        <skos:altLabel xml:lang="fr">montant remboursé</skos:altLabel>
+    </owl:DatatypeProperty>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="#Assure">
+        <rdfs:subClassOf rdf:resource="#Personne"/>
+        <owl:disjointWith rdf:resource="#Expert"/>
+        <rdfs:label xml:lang="fr">Assuré</rdfs:label>
+        <rdfs:comment xml:lang="fr">Personne qui a souscrit au moins un contrat d'assurance.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">client</skos:altLabel>
+        <skos:altLabel xml:lang="fr">souscripteur</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Assureur">
+        <rdfs:label xml:lang="fr">Assureur</rdfs:label>
+        <rdfs:comment xml:lang="fr">Compagnie d'assurance qui porte les contrats.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">compagnie d'assurance</skos:altLabel>
+        <skos:altLabel xml:lang="fr">compagnie</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#BaremeIndemnisation">
+        <!-- Un barème est défini par exactement un assureur (restriction sur la propriété inverse de definitBareme) -->
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="#definitBareme"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="#Assureur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="fr">Barème d'indemnisation</rdfs:label>
+        <rdfs:comment xml:lang="fr">Grille qui fixe le taux de remboursement appliqué à une ou plusieurs garanties.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">barème</skos:altLabel>
+        <skos:altLabel xml:lang="fr">grille d'indemnisation</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Clause">
+        <rdfs:label xml:lang="fr">Clause légale</rdfs:label>
+        <rdfs:comment xml:lang="fr">Disposition légale ou contractuelle contenue dans un contrat d'assurance.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">clause</skos:altLabel>
+        <skos:altLabel xml:lang="fr">condition</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#ClauseExclusion">
+        <rdfs:subClassOf rdf:resource="#Clause"/>
+        <owl:disjointWith rdf:resource="#ClauseObligatoire"/>
+        <rdfs:label xml:lang="fr">Clause d'exclusion</rdfs:label>
+        <rdfs:comment xml:lang="fr">Clause qui exclut certains cas de la couverture d'une garantie.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">exclusion</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#ClauseObligatoire">
+        <rdfs:subClassOf rdf:resource="#Clause"/>
+        <rdfs:label xml:lang="fr">Clause obligatoire</rdfs:label>
+        <rdfs:comment xml:lang="fr">Obligation imposée à l'assuré ou à l'assureur.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">obligation</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Contrat">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#possedeGarantie"/>
+                <owl:someValuesFrom rdf:resource="#Garantie"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#assurePar"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="#Assureur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:hasKey rdf:parseType="Collection">
+            <rdf:Description rdf:about="#numeroContrat"/>
+        </owl:hasKey>
+        <rdfs:label xml:lang="fr">Contrat d'assurance</rdfs:label>
+        <rdfs:comment xml:lang="fr">Contrat liant un assuré à un assureur ; identifié de manière unique par son numéro.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">contrat</skos:altLabel>
+        <skos:altLabel xml:lang="fr">police d'assurance</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#ContratAutomobile">
+        <rdfs:subClassOf rdf:resource="#Contrat"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#possedeGarantie"/>
+                <owl:someValuesFrom rdf:resource="#GarantieResponsabiliteCivile"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="fr">Contrat automobile</rdfs:label>
+        <rdfs:comment xml:lang="fr">Contrat couvrant un véhicule ; il inclut obligatoirement la responsabilité civile.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">assurance automobile</skos:altLabel>
+        <skos:altLabel xml:lang="fr">assurance auto</skos:altLabel>
+        <skos:altLabel xml:lang="fr">contrat auto</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#ContratHabitation">
+        <rdfs:subClassOf rdf:resource="#Contrat"/>
+        <rdfs:label xml:lang="fr">Contrat habitation</rdfs:label>
+        <skos:altLabel xml:lang="fr">assurance habitation</skos:altLabel>
+        <skos:altLabel xml:lang="fr">assurance logement</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#ContratSante">
+        <rdfs:subClassOf rdf:resource="#Contrat"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#possedeGarantie"/>
+                <owl:someValuesFrom rdf:resource="#GarantieFraisMedicaux"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="fr">Contrat santé</rdfs:label>
+        <skos:altLabel xml:lang="fr">assurance santé</skos:altLabel>
+        <skos:altLabel xml:lang="fr">assurance maladie</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#ContratVie">
+        <rdfs:subClassOf rdf:resource="#Contrat"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#possedeGarantie"/>
+                <owl:someValuesFrom rdf:resource="#GarantieDeces"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="fr">Contrat vie</rdfs:label>
+        <skos:altLabel xml:lang="fr">assurance vie</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Dommage">
+        <rdfs:label xml:lang="fr">Dommage</rdfs:label>
+        <skos:altLabel xml:lang="fr">dégât</skos:altLabel>
+        <skos:altLabel xml:lang="fr">préjudice</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#DommageCorporel">
+        <rdfs:subClassOf rdf:resource="#Dommage"/>
+        <rdfs:label xml:lang="fr">Dommage corporel</rdfs:label>
+        <rdfs:comment xml:lang="fr">Atteinte à l'intégrité physique d'une personne.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">blessure</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#DommageImmateriel">
+        <rdfs:subClassOf rdf:resource="#Dommage"/>
+        <rdfs:label xml:lang="fr">Dommage immatériel</rdfs:label>
+        <rdfs:comment xml:lang="fr">Préjudice financier ou perte de jouissance (frais de relogement, perte d'exploitation...).</rdfs:comment>
+        <skos:altLabel xml:lang="fr">préjudice financier</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#DommageMateriel">
+        <rdfs:subClassOf rdf:resource="#Dommage"/>
+        <rdfs:label xml:lang="fr">Dommage matériel</rdfs:label>
+        <rdfs:comment xml:lang="fr">Détérioration, destruction ou perte d'un bien.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">dégât matériel</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Expert">
+        <rdfs:subClassOf rdf:resource="#Personne"/>
+        <!-- Tout expert est mandaté par au moins une compagnie -->
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#travaillePour"/>
+                <owl:someValuesFrom rdf:resource="#Assureur"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="fr">Expert</rdfs:label>
+        <rdfs:comment xml:lang="fr">Expert chargé d'évaluer les dommages d'un sinistre.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">expert en sinistres</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Franchise">
+        <rdfs:label xml:lang="fr">Franchise</rdfs:label>
+        <rdfs:comment xml:lang="fr">Somme qui reste à la charge de l'assuré lors d'une indemnisation.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Garantie">
+        <rdfs:label xml:lang="fr">Garantie</rdfs:label>
+        <rdfs:comment xml:lang="fr">Risque couvert par un contrat, dans la limite d'un plafond.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">couverture</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#GarantieDeces">
+        <rdfs:subClassOf rdf:resource="#Garantie"/>
+        <rdfs:label xml:lang="fr">Garantie décès</rdfs:label>
+        <skos:altLabel xml:lang="fr">capital décès</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#GarantieDegatsDesEaux">
+        <rdfs:subClassOf rdf:resource="#Garantie"/>
+        <rdfs:label xml:lang="fr">Garantie dégâts des eaux</rdfs:label>
+        <skos:altLabel xml:lang="fr">dégât des eaux</skos:altLabel>
+        <skos:altLabel xml:lang="fr">fuite d'eau</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#GarantieFraisMedicaux">
+        <rdfs:subClassOf rdf:resource="#Garantie"/>
+        <rdfs:label xml:lang="fr">Garantie frais médicaux</rdfs:label>
+        <skos:altLabel xml:lang="fr">frais médicaux</skos:altLabel>
+        <skos:altLabel xml:lang="fr">hospitalisation</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#GarantieIncendie">
+        <rdfs:subClassOf rdf:resource="#Garantie"/>
+        <rdfs:label xml:lang="fr">Garantie incendie</rdfs:label>
+        <skos:altLabel xml:lang="fr">incendie</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#GarantieResponsabiliteCivile">
+        <rdfs:subClassOf rdf:resource="#Garantie"/>
+        <rdfs:label xml:lang="fr">Garantie responsabilité civile</rdfs:label>
+        <rdfs:comment xml:lang="fr">Couvre les dommages causés à des tiers.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">responsabilité civile</skos:altLabel>
+        <skos:altLabel xml:lang="fr">RC</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#GarantieVol">
+        <rdfs:subClassOf rdf:resource="#Garantie"/>
+        <rdfs:label xml:lang="fr">Garantie vol</rdfs:label>
+        <skos:altLabel xml:lang="fr">vol</skos:altLabel>
+        <skos:altLabel xml:lang="fr">cambriolage</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Indemnisation">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#suitBareme"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="fr">Indemnisation</rdfs:label>
+        <rdfs:comment xml:lang="fr">Montant versé = (somme des montants estimés des dommages - franchise) x taux du barème, dans la limite du plafond de la garantie.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">remboursement</skos:altLabel>
+        <skos:altLabel xml:lang="fr">indemnité</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Personne">
+        <owl:hasKey rdf:parseType="Collection">
+            <rdf:Description rdf:about="#cin"/>
+        </owl:hasKey>
+        <rdfs:label xml:lang="fr">Personne</rdfs:label>
+        <rdfs:comment xml:lang="fr">Personne physique, identifiée de manière unique par son numéro CIN.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Sinistre">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#causeDommage"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="#Dommage"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="fr">Sinistre</rdfs:label>
+        <rdfs:comment xml:lang="fr">Événement déclaré par un assuré au titre d'un contrat et ayant causé au moins un dommage.</rdfs:comment>
+        <skos:altLabel xml:lang="fr">accident</skos:altLabel>
+        <skos:altLabel xml:lang="fr">déclaration de sinistre</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#SinistreAutomobile">
+        <rdfs:subClassOf rdf:resource="#Sinistre"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#estCouvertPar"/>
+                <owl:someValuesFrom rdf:resource="#GarantieResponsabiliteCivile"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="fr">Sinistre automobile</rdfs:label>
+        <skos:altLabel xml:lang="fr">accident de voiture</skos:altLabel>
+        <skos:altLabel xml:lang="fr">accident de la route</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#SinistreCouvert">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Sinistre"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#estCouvertPar"/>
+                        <owl:someValuesFrom rdf:resource="#Garantie"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="fr">Sinistre couvert</rdfs:label>
+        <rdfs:comment xml:lang="fr">Classe définie : tout sinistre couvert par au moins une garantie (inféré par le raisonneur).</rdfs:comment>
+        <skos:altLabel xml:lang="fr">sinistre pris en charge</skos:altLabel>
+    </owl:Class>
+
+    <owl:Class rdf:about="#SinistreGrave">
+        <rdfs:subClassOf rdf:resource="#Sinistre"/>
+        <rdfs:label xml:lang="fr">Sinistre grave</rdfs:label>
+        <rdfs:comment xml:lang="fr">Sinistre ayant causé un dommage corporel (inféré par la règle SWRL).</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#SinistreHabitation">
+        <rdfs:subClassOf rdf:resource="#Sinistre"/>
+        <rdfs:label xml:lang="fr">Sinistre habitation</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="#SinistreSante">
+        <rdfs:subClassOf rdf:resource="#Sinistre"/>
+        <rdfs:label xml:lang="fr">Sinistre santé</rdfs:label>
+    </owl:Class>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- ===== Assureurs ===== -->
+
+    <owl:NamedIndividual rdf:about="#Assureur_STAR">
+        <rdf:type rdf:resource="#Assureur"/>
+        <proposeGarantie rdf:resource="#Garantie_RC_Auto"/>
+        <proposeGarantie rdf:resource="#Garantie_Vol_Auto"/>
+        <proposeGarantie rdf:resource="#Garantie_Deces"/>
+        <definitBareme rdf:resource="#Bareme_Auto_2024"/>
+        <raisonSociale>STAR Assurances</raisonSociale>
+        <adresse>Tunis</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assureur_COMAR">
+        <rdf:type rdf:resource="#Assureur"/>
+        <proposeGarantie rdf:resource="#Garantie_Incendie_Hab"/>
+        <proposeGarantie rdf:resource="#Garantie_DegatsEaux_Hab"/>
+        <proposeGarantie rdf:resource="#Garantie_Vol_Hab"/>
+        <proposeGarantie rdf:resource="#Garantie_RC_Habitation"/>
+        <definitBareme rdf:resource="#Bareme_Habitation_2025"/>
+        <raisonSociale>COMAR Assurances</raisonSociale>
+        <adresse>Tunis</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assureur_GAT">
+        <rdf:type rdf:resource="#Assureur"/>
+        <proposeGarantie rdf:resource="#Garantie_FraisMedicaux"/>
+        <proposeGarantie rdf:resource="#Garantie_RC_Auto"/>
+        <proposeGarantie rdf:resource="#Garantie_Vol_Auto"/>
+        <definitBareme rdf:resource="#Bareme_Sante_2026"/>
+        <definitBareme rdf:resource="#Bareme_Corporel_2025"/>
+        <raisonSociale>GAT Assurances</raisonSociale>
+        <adresse>Tunis</adresse>
+    </owl:NamedIndividual>
+
+    <!-- ===== Assurés ===== -->
+
+    <owl:NamedIndividual rdf:about="#Assure_Amine">
+        <rdf:type rdf:resource="#Assure"/>
+        <aPourContrat rdf:resource="#Contrat_001"/>
+        <aPourContrat rdf:resource="#Contrat_002"/>
+        <declareSinistre rdf:resource="#Sinistre_2024_017"/>
+        <nom>Ben Salah</nom>
+        <prenom>Amine</prenom>
+        <cin>12345601</cin>
+        <adresse>Tunis</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assure_Sarra">
+        <rdf:type rdf:resource="#Assure"/>
+        <aPourContrat rdf:resource="#Contrat_003"/>
+        <declareSinistre rdf:resource="#Sinistre_2025_042"/>
+        <declareSinistre rdf:resource="#Sinistre_2026_011"/>
+        <nom>Trabelsi</nom>
+        <prenom>Sarra</prenom>
+        <cin>12345602</cin>
+        <adresse>Sousse</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assure_Youssef">
+        <rdf:type rdf:resource="#Assure"/>
+        <aPourContrat rdf:resource="#Contrat_004"/>
+        <aPourContrat rdf:resource="#Contrat_007"/>
+        <declareSinistre rdf:resource="#Sinistre_2025_031"/>
+        <declareSinistre rdf:resource="#Sinistre_2026_003"/>
+        <nom>Gharbi</nom>
+        <prenom>Youssef</prenom>
+        <cin>12345603</cin>
+        <adresse>Ariana</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assure_Ines">
+        <rdf:type rdf:resource="#Assure"/>
+        <aPourContrat rdf:resource="#Contrat_005"/>
+        <nom>Mansouri</nom>
+        <prenom>Ines</prenom>
+        <cin>12345604</cin>
+        <adresse>Nabeul</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assure_Mehdi">
+        <rdf:type rdf:resource="#Assure"/>
+        <aPourContrat rdf:resource="#Contrat_006"/>
+        <declareSinistre rdf:resource="#Sinistre_2025_058"/>
+        <nom>Jaziri</nom>
+        <prenom>Mehdi</prenom>
+        <cin>12345605</cin>
+        <adresse>Sfax</adresse>
+    </owl:NamedIndividual>
+
+    <!-- ===== Experts ===== -->
+
+    <owl:NamedIndividual rdf:about="#Expert_Karim">
+        <rdf:type rdf:resource="#Expert"/>
+        <travaillePour rdf:resource="#Assureur_STAR"/>
+        <travaillePour rdf:resource="#Assureur_GAT"/>
+        <nom>Haddad</nom>
+        <prenom>Karim</prenom>
+        <cin>12345611</cin>
+        <adresse>Tunis</adresse>
+        <specialite>Automobile</specialite>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Expert_Leila">
+        <rdf:type rdf:resource="#Expert"/>
+        <travaillePour rdf:resource="#Assureur_COMAR"/>
+        <nom>Bouaziz</nom>
+        <prenom>Leila</prenom>
+        <cin>12345612</cin>
+        <adresse>Sousse</adresse>
+        <specialite>Bâtiment</specialite>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Expert_Nabil">
+        <rdf:type rdf:resource="#Expert"/>
+        <travaillePour rdf:resource="#Assureur_GAT"/>
+        <nom>Chaabane</nom>
+        <prenom>Nabil</prenom>
+        <cin>12345613</cin>
+        <adresse>Tunis</adresse>
+        <specialite>Médical</specialite>
+    </owl:NamedIndividual>
+
+    <!-- ===== Garanties ===== -->
+
+    <owl:NamedIndividual rdf:about="#Garantie_RC_Auto">
+        <rdf:type rdf:resource="#GarantieResponsabiliteCivile"/>
+        <libelleGarantie>Responsabilité civile automobile</libelleGarantie>
+        <plafondGarantie rdf:datatype="&xsd;float">50000.0</plafondGarantie>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Garantie_Vol_Auto">
+        <rdf:type rdf:resource="#GarantieVol"/>
+        <libelleGarantie>Vol du véhicule</libelleGarantie>
+        <plafondGarantie rdf:datatype="&xsd;float">30000.0</plafondGarantie>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Garantie_RC_Habitation">
+        <rdf:type rdf:resource="#GarantieResponsabiliteCivile"/>
+        <libelleGarantie>Responsabilité civile habitation</libelleGarantie>
+        <plafondGarantie rdf:datatype="&xsd;float">20000.0</plafondGarantie>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Garantie_Incendie_Hab">
+        <rdf:type rdf:resource="#GarantieIncendie"/>
+        <libelleGarantie>Incendie et explosions</libelleGarantie>
+        <plafondGarantie rdf:datatype="&xsd;float">150000.0</plafondGarantie>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Garantie_DegatsEaux_Hab">
+        <rdf:type rdf:resource="#GarantieDegatsDesEaux"/>
+        <libelleGarantie>Dégâts des eaux</libelleGarantie>
+        <plafondGarantie rdf:datatype="&xsd;float">20000.0</plafondGarantie>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Garantie_Vol_Hab">
+        <rdf:type rdf:resource="#GarantieVol"/>
+        <libelleGarantie>Vol et cambriolage</libelleGarantie>
+        <plafondGarantie rdf:datatype="&xsd;float">15000.0</plafondGarantie>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Garantie_FraisMedicaux">
+        <rdf:type rdf:resource="#GarantieFraisMedicaux"/>
+        <libelleGarantie>Frais médicaux et d'hospitalisation</libelleGarantie>
+        <plafondGarantie rdf:datatype="&xsd;float">10000.0</plafondGarantie>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Garantie_Deces">
+        <rdf:type rdf:resource="#GarantieDeces"/>
+        <libelleGarantie>Capital décès</libelleGarantie>
+        <plafondGarantie rdf:datatype="&xsd;float">100000.0</plafondGarantie>
+    </owl:NamedIndividual>
+
+    <!-- ===== Franchises ===== -->
+
+    <owl:NamedIndividual rdf:about="#Franchise_Auto_001">
+        <rdf:type rdf:resource="#Franchise"/>
+        <montantFranchise rdf:datatype="&xsd;float">200.0</montantFranchise>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Franchise_Auto_002">
+        <rdf:type rdf:resource="#Franchise"/>
+        <montantFranchise rdf:datatype="&xsd;float">300.0</montantFranchise>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Franchise_Hab_001">
+        <rdf:type rdf:resource="#Franchise"/>
+        <montantFranchise rdf:datatype="&xsd;float">150.0</montantFranchise>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Franchise_Sante_001">
+        <rdf:type rdf:resource="#Franchise"/>
+        <montantFranchise rdf:datatype="&xsd;float">50.0</montantFranchise>
+    </owl:NamedIndividual>
+
+    <!-- ===== Barèmes d'indemnisation ===== -->
+
+    <owl:NamedIndividual rdf:about="#Bareme_Auto_2024">
+        <rdf:type rdf:resource="#BaremeIndemnisation"/>
+        <sAppliqueA rdf:resource="#Garantie_RC_Auto"/>
+        <sAppliqueA rdf:resource="#Garantie_Vol_Auto"/>
+        <libelleBareme>Barème dommages matériels automobile 2024</libelleBareme>
+        <tauxIndemnisation rdf:datatype="&xsd;float">0.8</tauxIndemnisation>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Bareme_Corporel_2025">
+        <rdf:type rdf:resource="#BaremeIndemnisation"/>
+        <sAppliqueA rdf:resource="#Garantie_RC_Auto"/>
+        <libelleBareme>Barème dommages corporels 2025</libelleBareme>
+        <tauxIndemnisation rdf:datatype="&xsd;float">1.0</tauxIndemnisation>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Bareme_Habitation_2025">
+        <rdf:type rdf:resource="#BaremeIndemnisation"/>
+        <sAppliqueA rdf:resource="#Garantie_Incendie_Hab"/>
+        <sAppliqueA rdf:resource="#Garantie_DegatsEaux_Hab"/>
+        <sAppliqueA rdf:resource="#Garantie_Vol_Hab"/>
+        <libelleBareme>Barème habitation 2025</libelleBareme>
+        <tauxIndemnisation rdf:datatype="&xsd;float">0.9</tauxIndemnisation>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Bareme_Sante_2026">
+        <rdf:type rdf:resource="#BaremeIndemnisation"/>
+        <sAppliqueA rdf:resource="#Garantie_FraisMedicaux"/>
+        <libelleBareme>Barème frais médicaux 2026</libelleBareme>
+        <tauxIndemnisation rdf:datatype="&xsd;float">0.7</tauxIndemnisation>
+    </owl:NamedIndividual>
+
+    <!-- ===== Clauses légales : obligations ===== -->
+
+    <owl:NamedIndividual rdf:about="#Clause_DeclarationRisque">
+        <rdf:type rdf:resource="#ClauseObligatoire"/>
+        <libelleClause>Déclaration exacte du risque</libelleClause>
+        <texteClause>L'assuré doit déclarer exactement, lors de la souscription, toutes les circonstances connues de lui permettant à l'assureur d'apprécier le risque.</texteClause>
+        <referenceLegale>Code des assurances (Loi n° 92-24 du 9 mars 1992)</referenceLegale>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Clause_PaiementPrime">
+        <rdf:type rdf:resource="#ClauseObligatoire"/>
+        <libelleClause>Paiement de la prime</libelleClause>
+        <texteClause>L'assuré est tenu de payer la prime aux échéances convenues ; à défaut, la garantie peut être suspendue.</texteClause>
+        <referenceLegale>Code des assurances (Loi n° 92-24 du 9 mars 1992)</referenceLegale>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Clause_DeclarationSinistre">
+        <rdf:type rdf:resource="#ClauseObligatoire"/>
+        <libelleClause>Déclaration du sinistre</libelleClause>
+        <texteClause>L'assuré doit déclarer tout sinistre à l'assureur dans un délai de 5 jours ouvrables à compter du jour où il en a eu connaissance.</texteClause>
+        <referenceLegale>Code des assurances (Loi n° 92-24 du 9 mars 1992)</referenceLegale>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Clause_AssuranceObligatoireRC">
+        <rdf:type rdf:resource="#ClauseObligatoire"/>
+        <libelleClause>Assurance obligatoire de la responsabilité civile automobile</libelleClause>
+        <texteClause>Tout propriétaire d'un véhicule terrestre à moteur doit être couvert par une assurance garantissant sa responsabilité civile envers les tiers.</texteClause>
+        <referenceLegale>Code des assurances (Loi n° 92-24 du 9 mars 1992)</referenceLegale>
+    </owl:NamedIndividual>
+
+    <!-- ===== Clauses légales : exclusions ===== -->
+
+    <owl:NamedIndividual rdf:about="#Clause_Exclusion_FauteIntentionnelle">
+        <rdf:type rdf:resource="#ClauseExclusion"/>
+        <exclut rdf:resource="#Garantie_RC_Auto"/>
+        <exclut rdf:resource="#Garantie_RC_Habitation"/>
+        <libelleClause>Exclusion de la faute intentionnelle</libelleClause>
+        <texteClause>Les dommages causés intentionnellement par l'assuré ne sont pas garantis.</texteClause>
+        <referenceLegale>Code des assurances (Loi n° 92-24 du 9 mars 1992)</referenceLegale>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Clause_Exclusion_ClesSurVehicule">
+        <rdf:type rdf:resource="#ClauseExclusion"/>
+        <exclut rdf:resource="#Garantie_Vol_Auto"/>
+        <libelleClause>Exclusion du vol avec clés laissées dans le véhicule</libelleClause>
+        <texteClause>Le vol du véhicule n'est pas garanti lorsque les clés ont été laissées sur ou dans le véhicule.</texteClause>
+        <referenceLegale>Conditions générales du contrat</referenceLegale>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Clause_Exclusion_DefautEntretien">
+        <rdf:type rdf:resource="#ClauseExclusion"/>
+        <exclut rdf:resource="#Garantie_DegatsEaux_Hab"/>
+        <libelleClause>Exclusion pour défaut d'entretien</libelleClause>
+        <texteClause>Les dégâts des eaux résultant d'un défaut d'entretien manifeste des canalisations ne sont pas garantis.</texteClause>
+        <referenceLegale>Conditions générales du contrat</referenceLegale>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Clause_Exclusion_Guerre">
+        <rdf:type rdf:resource="#ClauseExclusion"/>
+        <exclut rdf:resource="#Garantie_Incendie_Hab"/>
+        <libelleClause>Exclusion des risques de guerre et d'émeutes</libelleClause>
+        <texteClause>Les dommages résultant d'une guerre, d'une émeute ou d'un mouvement populaire ne sont pas garantis.</texteClause>
+        <referenceLegale>Conditions générales du contrat</referenceLegale>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Clause_Exclusion_MaladieAnterieure">
+        <rdf:type rdf:resource="#ClauseExclusion"/>
+        <exclut rdf:resource="#Garantie_FraisMedicaux"/>
+        <libelleClause>Exclusion des maladies antérieures non déclarées</libelleClause>
+        <texteClause>Les frais liés à une maladie antérieure à la souscription et non déclarée ne sont pas remboursés.</texteClause>
+        <referenceLegale>Conditions générales du contrat</referenceLegale>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Clause_Exclusion_Suicide">
+        <rdf:type rdf:resource="#ClauseExclusion"/>
+        <exclut rdf:resource="#Garantie_Deces"/>
+        <libelleClause>Exclusion du suicide la première année</libelleClause>
+        <texteClause>Le décès par suicide survenu au cours de la première année du contrat n'est pas couvert.</texteClause>
+        <referenceLegale>Conditions générales du contrat</referenceLegale>
+    </owl:NamedIndividual>
+
+    <!-- ===== Contrats ===== -->
+
+    <owl:NamedIndividual rdf:about="#Contrat_001">
+        <rdf:type rdf:resource="#ContratAutomobile"/>
+        <assurePar rdf:resource="#Assureur_STAR"/>
+        <possedeGarantie rdf:resource="#Garantie_RC_Auto"/>
+        <appliqueFranchise rdf:resource="#Franchise_Auto_001"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_AssuranceObligatoireRC"/>
+        <contientClause rdf:resource="#Clause_Exclusion_FauteIntentionnelle"/>
+        <numeroContrat>CT-2024-001</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2024-01-15</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2025-01-14</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">450.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">false</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_002">
+        <rdf:type rdf:resource="#ContratAutomobile"/>
+        <assurePar rdf:resource="#Assureur_STAR"/>
+        <possedeGarantie rdf:resource="#Garantie_RC_Auto"/>
+        <possedeGarantie rdf:resource="#Garantie_Vol_Auto"/>
+        <appliqueFranchise rdf:resource="#Franchise_Auto_001"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_AssuranceObligatoireRC"/>
+        <contientClause rdf:resource="#Clause_Exclusion_FauteIntentionnelle"/>
+        <contientClause rdf:resource="#Clause_Exclusion_ClesSurVehicule"/>
+        <numeroContrat>CT-2026-002</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2026-01-15</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2027-01-14</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">480.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">true</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_003">
+        <rdf:type rdf:resource="#ContratHabitation"/>
+        <assurePar rdf:resource="#Assureur_COMAR"/>
+        <possedeGarantie rdf:resource="#Garantie_Incendie_Hab"/>
+        <possedeGarantie rdf:resource="#Garantie_DegatsEaux_Hab"/>
+        <possedeGarantie rdf:resource="#Garantie_Vol_Hab"/>
+        <possedeGarantie rdf:resource="#Garantie_RC_Habitation"/>
+        <appliqueFranchise rdf:resource="#Franchise_Hab_001"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_Exclusion_FauteIntentionnelle"/>
+        <contientClause rdf:resource="#Clause_Exclusion_DefautEntretien"/>
+        <contientClause rdf:resource="#Clause_Exclusion_Guerre"/>
+        <numeroContrat>CT-2025-003</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2025-03-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2027-02-28</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">320.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">true</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_004">
+        <rdf:type rdf:resource="#ContratSante"/>
+        <assurePar rdf:resource="#Assureur_GAT"/>
+        <possedeGarantie rdf:resource="#Garantie_FraisMedicaux"/>
+        <appliqueFranchise rdf:resource="#Franchise_Sante_001"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_Exclusion_MaladieAnterieure"/>
+        <numeroContrat>CT-2026-004</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2026-01-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2026-12-31</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">600.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">true</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_005">
+        <rdf:type rdf:resource="#ContratVie"/>
+        <assurePar rdf:resource="#Assureur_STAR"/>
+        <possedeGarantie rdf:resource="#Garantie_Deces"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_Exclusion_Suicide"/>
+        <numeroContrat>CT-2020-005</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2020-05-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2040-04-30</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">1200.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">true</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_006">
+        <rdf:type rdf:resource="#ContratAutomobile"/>
+        <assurePar rdf:resource="#Assureur_GAT"/>
+        <possedeGarantie rdf:resource="#Garantie_RC_Auto"/>
+        <possedeGarantie rdf:resource="#Garantie_Vol_Auto"/>
+        <appliqueFranchise rdf:resource="#Franchise_Auto_002"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_AssuranceObligatoireRC"/>
+        <contientClause rdf:resource="#Clause_Exclusion_FauteIntentionnelle"/>
+        <contientClause rdf:resource="#Clause_Exclusion_ClesSurVehicule"/>
+        <numeroContrat>CT-2025-006</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2025-06-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2026-05-31</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">520.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">false</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_007">
+        <rdf:type rdf:resource="#ContratHabitation"/>
+        <assurePar rdf:resource="#Assureur_COMAR"/>
+        <possedeGarantie rdf:resource="#Garantie_Incendie_Hab"/>
+        <possedeGarantie rdf:resource="#Garantie_DegatsEaux_Hab"/>
+        <appliqueFranchise rdf:resource="#Franchise_Hab_001"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_Exclusion_DefautEntretien"/>
+        <contientClause rdf:resource="#Clause_Exclusion_Guerre"/>
+        <numeroContrat>CT-2024-007</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2024-09-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2025-08-31</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">280.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">false</estValide>
+    </owl:NamedIndividual>
+
+    <!-- ===== Sinistres ===== -->
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2024_017">
+        <rdf:type rdf:resource="#SinistreAutomobile"/>
+        <concerneContrat rdf:resource="#Contrat_001"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_017"/>
+        <estCouvertPar rdf:resource="#Garantie_RC_Auto"/>
+        <estExpertisePar rdf:resource="#Expert_Karim"/>
+        <estIndemnisePar rdf:resource="#Indemnisation_017"/>
+        <dateSinistre rdf:datatype="&xsd;date">2024-06-10</dateSinistre>
+        <descriptionSinistre>Collision avec un autre véhicule au rond-point</descriptionSinistre>
+        <lieuSinistre>Tunis</lieuSinistre>
+        <statutSinistre>Indemnise</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2025_031">
+        <rdf:type rdf:resource="#SinistreHabitation"/>
+        <concerneContrat rdf:resource="#Contrat_007"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_031"/>
+        <estExpertisePar rdf:resource="#Expert_Leila"/>
+        <dateSinistre rdf:datatype="&xsd;date">2025-04-18</dateSinistre>
+        <descriptionSinistre>Infiltration d'eau due à une canalisation non entretenue (refusé : clause d'exclusion pour défaut d'entretien)</descriptionSinistre>
+        <lieuSinistre>Ariana</lieuSinistre>
+        <statutSinistre>Refuse</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2025_042">
+        <rdf:type rdf:resource="#SinistreHabitation"/>
+        <concerneContrat rdf:resource="#Contrat_003"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_042"/>
+        <causeDommage rdf:resource="#Dommage_Immateriel_042"/>
+        <estCouvertPar rdf:resource="#Garantie_Incendie_Hab"/>
+        <estExpertisePar rdf:resource="#Expert_Leila"/>
+        <estIndemnisePar rdf:resource="#Indemnisation_042"/>
+        <dateSinistre rdf:datatype="&xsd;date">2025-11-03</dateSinistre>
+        <descriptionSinistre>Incendie dans la cuisine suite à un court-circuit</descriptionSinistre>
+        <lieuSinistre>Sousse</lieuSinistre>
+        <statutSinistre>Indemnise</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2025_058">
+        <rdf:type rdf:resource="#SinistreAutomobile"/>
+        <concerneContrat rdf:resource="#Contrat_006"/>
+        <causeDommage rdf:resource="#Dommage_Corporel_058"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_058"/>
+        <estCouvertPar rdf:resource="#Garantie_RC_Auto"/>
+        <estExpertisePar rdf:resource="#Expert_Karim"/>
+        <dateSinistre rdf:datatype="&xsd;date">2025-09-22</dateSinistre>
+        <descriptionSinistre>Accident de la route avec un véhicule venant en sens inverse, conducteur adverse blessé</descriptionSinistre>
+        <lieuSinistre>Sfax</lieuSinistre>
+        <statutSinistre>EnExpertise</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2026_003">
+        <rdf:type rdf:resource="#SinistreSante"/>
+        <concerneContrat rdf:resource="#Contrat_004"/>
+        <causeDommage rdf:resource="#Dommage_Corporel_003"/>
+        <estCouvertPar rdf:resource="#Garantie_FraisMedicaux"/>
+        <estExpertisePar rdf:resource="#Expert_Nabil"/>
+        <estIndemnisePar rdf:resource="#Indemnisation_003"/>
+        <dateSinistre rdf:datatype="&xsd;date">2026-02-14</dateSinistre>
+        <descriptionSinistre>Hospitalisation pour une appendicite</descriptionSinistre>
+        <lieuSinistre>Tunis</lieuSinistre>
+        <statutSinistre>Indemnise</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2026_011">
+        <rdf:type rdf:resource="#SinistreHabitation"/>
+        <concerneContrat rdf:resource="#Contrat_003"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_011"/>
+        <estCouvertPar rdf:resource="#Garantie_Vol_Hab"/>
+        <dateSinistre rdf:datatype="&xsd;date">2026-08-05</dateSinistre>
+        <descriptionSinistre>Cambriolage de l'appartement pendant les vacances</descriptionSinistre>
+        <lieuSinistre>Sousse</lieuSinistre>
+        <statutSinistre>Declare</statutSinistre>
+    </owl:NamedIndividual>
+
+    <!-- ===== Dommages ===== -->
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_017">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Pare-chocs et aile avant du véhicule tiers endommagés</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">4575.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_031">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Plafond et peintures endommagés par l'infiltration</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">2800.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_042">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Cuisine et mobilier détruits par le feu</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">11650.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Immateriel_042">
+        <rdf:type rdf:resource="#DommageImmateriel"/>
+        <descriptionDommage>Frais de relogement temporaire</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">1500.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Corporel_058">
+        <rdf:type rdf:resource="#DommageCorporel"/>
+        <descriptionDommage>Fracture du bras du conducteur adverse</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">8000.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_058">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Dégâts sur le véhicule adverse</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">3200.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Corporel_003">
+        <rdf:type rdf:resource="#DommageCorporel"/>
+        <descriptionDommage>Frais d'hospitalisation et d'intervention chirurgicale</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">2400.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_011">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Bijoux et appareils électroniques volés</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">5400.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <!-- ===== Indemnisations : (dommages - franchise) x taux du barème ===== -->
+
+    <owl:NamedIndividual rdf:about="#Indemnisation_017">
+        <rdf:type rdf:resource="#Indemnisation"/>
+        <suitBareme rdf:resource="#Bareme_Auto_2024"/>
+        <montantIndemnisation rdf:datatype="&xsd;float">3500.0</montantIndemnisation>
+        <dateIndemnisation rdf:datatype="&xsd;date">2024-07-20</dateIndemnisation>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Indemnisation_042">
+        <rdf:type rdf:resource="#Indemnisation"/>
+        <suitBareme rdf:resource="#Bareme_Habitation_2025"/>
+        <montantIndemnisation rdf:datatype="&xsd;float">11700.0</montantIndemnisation>
+        <dateIndemnisation rdf:datatype="&xsd;date">2025-12-15</dateIndemnisation>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Indemnisation_003">
+        <rdf:type rdf:resource="#Indemnisation"/>
+        <suitBareme rdf:resource="#Bareme_Sante_2026"/>
+        <montantIndemnisation rdf:datatype="&xsd;float">1645.0</montantIndemnisation>
+        <dateIndemnisation rdf:datatype="&xsd;date">2026-03-10</dateIndemnisation>
+    </owl:NamedIndividual>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Les concepts principaux sont deux à deux disjoints -->
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Assureur"/>
+            <rdf:Description rdf:about="#BaremeIndemnisation"/>
+            <rdf:Description rdf:about="#Clause"/>
+            <rdf:Description rdf:about="#Contrat"/>
+            <rdf:Description rdf:about="#Dommage"/>
+            <rdf:Description rdf:about="#Franchise"/>
+            <rdf:Description rdf:about="#Garantie"/>
+            <rdf:Description rdf:about="#Indemnisation"/>
+            <rdf:Description rdf:about="#Personne"/>
+            <rdf:Description rdf:about="#Sinistre"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="#ContratAutomobile"/>
+            <rdf:Description rdf:about="#ContratHabitation"/>
+            <rdf:Description rdf:about="#ContratSante"/>
+            <rdf:Description rdf:about="#ContratVie"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="#DommageCorporel"/>
+            <rdf:Description rdf:about="#DommageImmateriel"/>
+            <rdf:Description rdf:about="#DommageMateriel"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="#GarantieDeces"/>
+            <rdf:Description rdf:about="#GarantieDegatsDesEaux"/>
+            <rdf:Description rdf:about="#GarantieFraisMedicaux"/>
+            <rdf:Description rdf:about="#GarantieIncendie"/>
+            <rdf:Description rdf:about="#GarantieResponsabiliteCivile"/>
+            <rdf:Description rdf:about="#GarantieVol"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="#SinistreAutomobile"/>
+            <rdf:Description rdf:about="#SinistreHabitation"/>
+            <rdf:Description rdf:about="#SinistreSante"/>
+        </owl:members>
+    </rdf:Description>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="#s">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="#d">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <rdfs:comment>Un sinistre qui cause un dommage corporel est considere comme grave</rdfs:comment>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="#Sinistre"/>
+                        <swrl:argument1 rdf:resource="#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="#causeDommage"/>
+                                <swrl:argument1 rdf:resource="#s"/>
+                                <swrl:argument2 rdf:resource="#d"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="#DommageCorporel"/>
+                                        <swrl:argument1 rdf:resource="#d"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="#SinistreGrave"/>
+                        <swrl:argument1 rdf:resource="#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>

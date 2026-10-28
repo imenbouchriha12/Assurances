@@ -1,0 +1,13 @@
+# FILTRAGE numerique : sinistres dont le total estime des dommages depasse 5000
+PREFIX :     <http://www.semanticweb.org/ontologies/assurance-sinistres#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?sinistre ?type (SUM(?m) AS ?totalEstime) WHERE {
+  ?sinistre a ?t ; :causeDommage/:montantEstime ?m .
+  ?t rdfs:subClassOf :Sinistre ; rdfs:label ?type .
+  FILTER(?t NOT IN (:SinistreGrave, :SinistreCouvert))
+}
+GROUP BY ?sinistre ?type
+HAVING (SUM(?m) > 5000)
+ORDER BY DESC(?totalEstime)

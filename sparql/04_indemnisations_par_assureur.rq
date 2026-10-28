@@ -1,0 +1,11 @@
+# AGREGATION : total et nombre d'indemnisations versees par chaque assureur
+PREFIX :     <http://www.semanticweb.org/ontologies/assurance-sinistres#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?assureur (COUNT(?i) AS ?nb) (SUM(?montant) AS ?total) WHERE {
+  ?s :estIndemnisePar ?i ; :concerneContrat/:assurePar/:raisonSociale ?assureur .
+  ?i :montantIndemnisation ?montant .
+}
+GROUP BY ?assureur
+ORDER BY DESC(?total)

@@ -1,0 +1,14 @@
+# FILTRAGE par date : contrats encore en cours aujourd'hui (validite calculee, pas lue dans estValide)
+PREFIX :     <http://www.semanticweb.org/ontologies/assurance-sinistres#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?numero ?type ?assure ?assureur ?fin ?prime WHERE {
+  ?c a :Contrat ; :numeroContrat ?numero ; :dateFinContrat ?fin ; :montantPrime ?prime ;
+     :assurePar/:raisonSociale ?assureur .
+  ?c a ?t . ?t rdfs:subClassOf :Contrat ; rdfs:label ?type .
+  ?a :aPourContrat ?c ; :prenom ?prenom ; :nom ?nom .
+  BIND(CONCAT(?prenom, " ", ?nom) AS ?assure)
+  FILTER(?fin >= xsd:date(NOW()))
+}
+ORDER BY ?fin

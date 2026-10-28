@@ -1,0 +1,10 @@
+# RECHERCHE plein texte (insensible a la casse) dans les descriptions de sinistres et de dommages
+PREFIX :     <http://www.semanticweb.org/ontologies/assurance-sinistres#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?sinistre ?description ?lieu WHERE {
+  ?sinistre a :Sinistre ; :descriptionSinistre ?description ; :lieuSinistre ?lieu .
+  OPTIONAL { ?sinistre :causeDommage/:descriptionDommage ?dd }
+  FILTER(CONTAINS(LCASE(?description), "incendie") || CONTAINS(LCASE(COALESCE(?dd, "")), "feu"))
+}

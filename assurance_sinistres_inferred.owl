@@ -1,0 +1,1534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns="http://www.semanticweb.org/ontologies/assurance-sinistres#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+   xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#texteClause">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="fr">texte de la clause</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#estIndemnisePar">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Indemnisation"/>
+    <rdfs:label xml:lang="fr">est indemnisé par</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Indemnisation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="Nc6e2ad2bf1b14360b7e77178c6ff426d"/>
+    <rdfs:label xml:lang="fr">Indemnisation</rdfs:label>
+    <rdfs:comment xml:lang="fr">Montant versé = (somme des montants estimés des dommages - franchise) x taux du barème, dans la limite du plafond de la garantie.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">remboursement</skos:altLabel>
+    <skos:altLabel xml:lang="fr">indemnité</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieFraisMedicaux">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <rdfs:label xml:lang="fr">Garantie frais médicaux</rdfs:label>
+    <skos:altLabel xml:lang="fr">frais médicaux</skos:altLabel>
+    <skos:altLabel xml:lang="fr">hospitalisation</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#BaremeIndemnisation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="Ncafccefef4da48bcbdb4236d7b6c8a7e"/>
+    <rdfs:label xml:lang="fr">Barème d'indemnisation</rdfs:label>
+    <rdfs:comment xml:lang="fr">Grille qui fixe le taux de remboursement appliqué à une ou plusieurs garanties.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">barème</skos:altLabel>
+    <skos:altLabel xml:lang="fr">grille d'indemnisation</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nef7b884b137a48e2a62f314d47af4dc5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#possedeGarantie"/>
+    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieFraisMedicaux"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur_COMAR">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur"/>
+    <proposeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Incendie_Hab"/>
+    <proposeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_DegatsEaux_Hab"/>
+    <proposeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Vol_Hab"/>
+    <proposeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_RC_Habitation"/>
+    <definitBareme rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Bareme_Habitation_2025"/>
+    <raisonSociale>COMAR Assurances</raisonSociale>
+    <adresse>Tunis</adresse>
+    <estAssureDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_007"/>
+    <estAssureDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_003"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_006">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ContratAutomobile"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <assurePar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur_GAT"/>
+    <possedeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_RC_Auto"/>
+    <possedeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Vol_Auto"/>
+    <appliqueFranchise rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise_Auto_002"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_DeclarationRisque"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_PaiementPrime"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_DeclarationSinistre"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_AssuranceObligatoireRC"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_FauteIntentionnelle"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_ClesSurVehicule"/>
+    <numeroContrat>CT-2025-006</numeroContrat>
+    <dateDebutContrat rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-06-01</dateDebutContrat>
+    <dateFinContrat rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-31</dateFinContrat>
+    <montantPrime rdf:datatype="http://www.w3.org/2001/XMLSchema#float">520.0</montantPrime>
+    <estValide rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</estValide>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_RC_Auto">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieResponsabiliteCivile"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <libelleGarantie>Responsabilité civile automobile</libelleGarantie>
+    <plafondGarantie rdf:datatype="http://www.w3.org/2001/XMLSchema#float">50000.0</plafondGarantie>
+    <estGarantieDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_006"/>
+    <estGarantieDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_001"/>
+    <estGarantieDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_002"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#numeroContrat">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="fr">numéro de contrat</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nbc5a136922a34201b679536f6fac65cf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#possedeGarantie"/>
+    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieResponsabiliteCivile"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre_2024_017">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreAutomobile"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreCouvert"/>
+    <concerneContrat rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_001"/>
+    <causeDommage rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Materiel_017"/>
+    <estCouvertPar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_RC_Auto"/>
+    <estExpertisePar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert_Karim"/>
+    <estIndemnisePar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Indemnisation_017"/>
+    <dateSinistre rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-06-10</dateSinistre>
+    <descriptionSinistre>Collision avec un autre véhicule au rond-point</descriptionSinistre>
+    <lieuSinistre>Tunis</lieuSinistre>
+    <statutSinistre>Indemnise</statutSinistre>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre_2025_042">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreHabitation"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreCouvert"/>
+    <concerneContrat rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_003"/>
+    <causeDommage rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Materiel_042"/>
+    <causeDommage rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Immateriel_042"/>
+    <estCouvertPar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Incendie_Hab"/>
+    <estExpertisePar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert_Leila"/>
+    <estIndemnisePar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Indemnisation_042"/>
+    <dateSinistre rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-11-03</dateSinistre>
+    <descriptionSinistre>Incendie dans la cuisine suite à un court-circuit</descriptionSinistre>
+    <lieuSinistre>Sousse</lieuSinistre>
+    <statutSinistre>Indemnise</statutSinistre>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_FauteIntentionnelle">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ClauseExclusion"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <exclut rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_RC_Auto"/>
+    <exclut rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_RC_Habitation"/>
+    <libelleClause>Exclusion de la faute intentionnelle</libelleClause>
+    <texteClause>Les dommages causés intentionnellement par l'assuré ne sont pas garantis.</texteClause>
+    <referenceLegale>Code des assurances (Loi n° 92-24 du 9 mars 1992)</referenceLegale>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#DommageCorporel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+    <rdfs:label xml:lang="fr">Dommage corporel</rdfs:label>
+    <rdfs:comment xml:lang="fr">Atteinte à l'intégrité physique d'une personne.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">blessure</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#estCouvertPar">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <rdfs:label xml:lang="fr">est couvert par</rdfs:label>
+    <skos:altLabel xml:lang="fr">pris en charge par</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Deces">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieDeces"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <libelleGarantie>Capital décès</libelleGarantie>
+    <plafondGarantie rdf:datatype="http://www.w3.org/2001/XMLSchema#float">100000.0</plafondGarantie>
+    <estGarantieDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_005"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieResponsabiliteCivile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <rdfs:label xml:lang="fr">Garantie responsabilité civile</rdfs:label>
+    <rdfs:comment xml:lang="fr">Couvre les dommages causés à des tiers.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">responsabilité civile</skos:altLabel>
+    <skos:altLabel xml:lang="fr">RC</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nd6612a6fc8a242af8acfc3ae951b411f">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+    <owl:members rdf:nodeID="N51c9e1a8222045e289a0e59fba781e25"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N5879e9e98ab24f71865e4601867d0b46">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#DommageImmateriel"/>
+    <rdf:rest rdf:nodeID="N93aee028afaa44f9bd19068c115c6684"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_PaiementPrime">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ClauseObligatoire"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <libelleClause>Paiement de la prime</libelleClause>
+    <texteClause>L'assuré est tenu de payer la prime aux échéances convenues ; à défaut, la garantie peut être suspendue.</texteClause>
+    <referenceLegale>Code des assurances (Loi n° 92-24 du 9 mars 1992)</referenceLegale>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#definitBareme">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#BaremeIndemnisation"/>
+    <rdfs:label xml:lang="fr">définit le barème</rdfs:label>
+    <rdfs:comment xml:lang="fr">Chaque compagnie fixe ses propres barèmes ; un barème appartient à un seul assureur (propriété inverse fonctionnelle).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieDegatsDesEaux">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <rdfs:label xml:lang="fr">Garantie dégâts des eaux</rdfs:label>
+    <skos:altLabel xml:lang="fr">dégât des eaux</skos:altLabel>
+    <skos:altLabel xml:lang="fr">fuite d'eau</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N25480da801d3465d9bbb6306cbcdb938">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:first>Refuse</rdf:first>
+    <rdf:rest rdf:nodeID="N7657d3c08da84d5f9fa4521cccfadb3c"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreHabitation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdfs:label xml:lang="fr">Sinistre habitation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre_2026_011">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreHabitation"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreCouvert"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <concerneContrat rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_003"/>
+    <causeDommage rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Materiel_011"/>
+    <estCouvertPar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Vol_Hab"/>
+    <dateSinistre rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-05</dateSinistre>
+    <descriptionSinistre>Cambriolage de l'appartement pendant les vacances</descriptionSinistre>
+    <lieuSinistre>Sousse</lieuSinistre>
+    <statutSinistre>Declare</statutSinistre>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#raisonSociale">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="fr">raison sociale</rdfs:label>
+    <skos:altLabel xml:lang="fr">nom de la compagnie</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_002">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ContratAutomobile"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <assurePar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur_STAR"/>
+    <possedeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_RC_Auto"/>
+    <possedeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Vol_Auto"/>
+    <appliqueFranchise rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise_Auto_001"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_DeclarationRisque"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_PaiementPrime"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_DeclarationSinistre"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_AssuranceObligatoireRC"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_FauteIntentionnelle"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_ClesSurVehicule"/>
+    <numeroContrat>CT-2026-002</numeroContrat>
+    <dateDebutContrat rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-01-15</dateDebutContrat>
+    <dateFinContrat rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2027-01-14</dateFinContrat>
+    <montantPrime rdf:datatype="http://www.w3.org/2001/XMLSchema#float">480.0</montantPrime>
+    <estValide rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</estValide>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_007">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ContratHabitation"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <assurePar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur_COMAR"/>
+    <possedeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Incendie_Hab"/>
+    <possedeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_DegatsEaux_Hab"/>
+    <appliqueFranchise rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise_Hab_001"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_DeclarationRisque"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_PaiementPrime"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_DeclarationSinistre"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_DefautEntretien"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_Guerre"/>
+    <numeroContrat>CT-2024-007</numeroContrat>
+    <dateDebutContrat rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-01</dateDebutContrat>
+    <dateFinContrat rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-08-31</dateFinContrat>
+    <montantPrime rdf:datatype="http://www.w3.org/2001/XMLSchema#float">280.0</montantPrime>
+    <estValide rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</estValide>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#ContratAutomobile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:subClassOf rdf:nodeID="Nbc5a136922a34201b679536f6fac65cf"/>
+    <rdfs:label xml:lang="fr">Contrat automobile</rdfs:label>
+    <rdfs:comment xml:lang="fr">Contrat couvrant un véhicule ; il inclut obligatoirement la responsabilité civile.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">assurance automobile</skos:altLabel>
+    <skos:altLabel xml:lang="fr">assurance auto</skos:altLabel>
+    <skos:altLabel xml:lang="fr">contrat auto</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Assure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne"/>
+    <owl:disjointWith rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert"/>
+    <rdfs:label xml:lang="fr">Assuré</rdfs:label>
+    <rdfs:comment xml:lang="fr">Personne qui a souscrit au moins un contrat d'assurance.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">client</skos:altLabel>
+    <skos:altLabel xml:lang="fr">souscripteur</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na79941ef98d14f6a97a544f79b7eca35">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+    <owl:members rdf:nodeID="Nea213af298934723ba11cc54b213a67b"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#ContratHabitation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:label xml:lang="fr">Contrat habitation</rdfs:label>
+    <skos:altLabel xml:lang="fr">assurance habitation</skos:altLabel>
+    <skos:altLabel xml:lang="fr">assurance logement</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Indemnisation_017">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Indemnisation"/>
+    <suitBareme rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Bareme_Auto_2024"/>
+    <montantIndemnisation rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3500.0</montantIndemnisation>
+    <dateIndemnisation rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-20</dateIndemnisation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Bareme_Habitation_2025">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#BaremeIndemnisation"/>
+    <sAppliqueA rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Incendie_Hab"/>
+    <sAppliqueA rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_DegatsEaux_Hab"/>
+    <sAppliqueA rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Vol_Hab"/>
+    <libelleBareme>Barème habitation 2025</libelleBareme>
+    <tauxIndemnisation rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9</tauxIndemnisation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre_2025_031">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreHabitation"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <concerneContrat rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_007"/>
+    <causeDommage rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Materiel_031"/>
+    <estExpertisePar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert_Leila"/>
+    <dateSinistre rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-04-18</dateSinistre>
+    <descriptionSinistre>Infiltration d'eau due à une canalisation non entretenue (refusé : clause d'exclusion pour défaut d'entretien)</descriptionSinistre>
+    <lieuSinistre>Ariana</lieuSinistre>
+    <statutSinistre>Refuse</statutSinistre>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreCouvert">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:nodeID="Nd886ecb39e4f42d7a43354a828ed154a"/>
+    <rdfs:label xml:lang="fr">Sinistre couvert</rdfs:label>
+    <rdfs:comment xml:lang="fr">Classe définie : tout sinistre couvert par au moins une garantie (inféré par le raisonneur).</rdfs:comment>
+    <skos:altLabel xml:lang="fr">sinistre pris en charge</skos:altLabel>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#montantEstime">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:label xml:lang="fr">montant estimé du dommage</rdfs:label>
+    <skos:altLabel xml:lang="fr">coût du dommage</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieVol">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <rdfs:label xml:lang="fr">Garantie vol</rdfs:label>
+    <skos:altLabel xml:lang="fr">vol</skos:altLabel>
+    <skos:altLabel xml:lang="fr">cambriolage</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_AssuranceObligatoireRC">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ClauseObligatoire"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <libelleClause>Assurance obligatoire de la responsabilité civile automobile</libelleClause>
+    <texteClause>Tout propriétaire d'un véhicule terrestre à moteur doit être couvert par une assurance garantissant sa responsabilité civile envers les tiers.</texteClause>
+    <referenceLegale>Code des assurances (Loi n° 92-24 du 9 mars 1992)</referenceLegale>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre_2026_003">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreSante"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreCouvert"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreGrave"/>
+    <concerneContrat rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_004"/>
+    <causeDommage rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Corporel_003"/>
+    <estCouvertPar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_FraisMedicaux"/>
+    <estExpertisePar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert_Nabil"/>
+    <estIndemnisePar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Indemnisation_003"/>
+    <dateSinistre rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-02-14</dateSinistre>
+    <descriptionSinistre>Hospitalisation pour une appendicite</descriptionSinistre>
+    <lieuSinistre>Tunis</lieuSinistre>
+    <statutSinistre>Indemnise</statutSinistre>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="Nf70a075e99e440b695f77cd29345678e"/>
+    <rdfs:label xml:lang="fr">Sinistre</rdfs:label>
+    <rdfs:comment xml:lang="fr">Événement déclaré par un assuré au titre d'un contrat et ayant causé au moins un dommage.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">accident</skos:altLabel>
+    <skos:altLabel xml:lang="fr">déclaration de sinistre</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#libelleClause">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="fr">libellé de la clause</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_DeclarationRisque">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ClauseObligatoire"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <libelleClause>Déclaration exacte du risque</libelleClause>
+    <texteClause>L'assuré doit déclarer exactement, lors de la souscription, toutes les circonstances connues de lui permettant à l'assureur d'apprécier le risque.</texteClause>
+    <referenceLegale>Code des assurances (Loi n° 92-24 du 9 mars 1992)</referenceLegale>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_DeclarationSinistre">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ClauseObligatoire"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <libelleClause>Déclaration du sinistre</libelleClause>
+    <texteClause>L'assuré doit déclarer tout sinistre à l'assureur dans un délai de 5 jours ouvrables à compter du jour où il en a eu connaissance.</texteClause>
+    <referenceLegale>Code des assurances (Loi n° 92-24 du 9 mars 1992)</referenceLegale>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ndcf4ea67e94d4fe69da09f1d1f45a5f0">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#assurePar"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#declareSinistre">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assure"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdfs:label xml:lang="fr">déclare le sinistre</rdfs:label>
+    <rdfs:comment xml:lang="fr">Un sinistre est déclaré par un seul assuré (propriété inverse fonctionnelle).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre_2025_058">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreAutomobile"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreCouvert"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreGrave"/>
+    <concerneContrat rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_006"/>
+    <causeDommage rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Corporel_058"/>
+    <causeDommage rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Materiel_058"/>
+    <estCouvertPar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_RC_Auto"/>
+    <estExpertisePar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert_Karim"/>
+    <dateSinistre rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-09-22</dateSinistre>
+    <descriptionSinistre>Accident de la route avec un véhicule venant en sens inverse, conducteur adverse blessé</descriptionSinistre>
+    <lieuSinistre>Sfax</lieuSinistre>
+    <statutSinistre>EnExpertise</statutSinistre>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Assure_Sarra">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assure"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne"/>
+    <aPourContrat rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_003"/>
+    <declareSinistre rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre_2025_042"/>
+    <declareSinistre rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre_2026_011"/>
+    <nom>Trabelsi</nom>
+    <prenom>Sarra</prenom>
+    <cin>12345602</cin>
+    <adresse>Sousse</adresse>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N1559545cbcc54f1195959871fb55d4fa">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieDeces"/>
+    <rdf:rest rdf:nodeID="N2e6ca9b16a174191ad3f639f8d112a60"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur_GAT">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur"/>
+    <proposeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_FraisMedicaux"/>
+    <proposeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_RC_Auto"/>
+    <proposeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Vol_Auto"/>
+    <definitBareme rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Bareme_Sante_2026"/>
+    <definitBareme rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Bareme_Corporel_2025"/>
+    <raisonSociale>GAT Assurances</raisonSociale>
+    <adresse>Tunis</adresse>
+    <estAssureDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_006"/>
+    <estAssureDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_004"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#DommageMateriel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+    <rdfs:label xml:lang="fr">Dommage matériel</rdfs:label>
+    <rdfs:comment xml:lang="fr">Détérioration, destruction ou perte d'un bien.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">dégât matériel</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#specialite">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="fr">spécialité</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#sAppliqueA">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#BaremeIndemnisation"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <rdfs:label xml:lang="fr">s'applique à</rdfs:label>
+    <rdfs:comment xml:lang="fr">Garanties pour lesquelles le barème d'indemnisation est utilisé.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf2f7f91d67c2492d9b010e1c3725e022">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#estCouvertPar"/>
+    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieResponsabiliteCivile"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Materiel_011">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#DommageMateriel"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+    <descriptionDommage>Bijoux et appareils électroniques volés</descriptionDommage>
+    <montantEstime rdf:datatype="http://www.w3.org/2001/XMLSchema#float">5400.0</montantEstime>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N9d743e5151564c21bc0b9a81c1746784">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ContratHabitation"/>
+    <rdf:rest rdf:nodeID="N9c0a4e74f65d4effb4f7653653b1ba93"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#statutSinistre">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdfs:range rdf:nodeID="N0b2c061c6e9442c29b4cff578d26805f"/>
+    <rdfs:label xml:lang="fr">statut du sinistre</rdfs:label>
+    <rdfs:comment xml:lang="fr">Valeurs possibles : Declare, EnExpertise, Indemnise, Refuse, Cloture.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">état du dossier</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_MaladieAnterieure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ClauseExclusion"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <exclut rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_FraisMedicaux"/>
+    <libelleClause>Exclusion des maladies antérieures non déclarées</libelleClause>
+    <texteClause>Les frais liés à une maladie antérieure à la souscription et non déclarée ne sont pas remboursés.</texteClause>
+    <referenceLegale>Conditions générales du contrat</referenceLegale>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#montantPrime">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:label xml:lang="fr">montant de la prime</rdfs:label>
+    <skos:altLabel xml:lang="fr">cotisation</skos:altLabel>
+    <skos:altLabel xml:lang="fr">prix</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_004">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ContratSante"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <assurePar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur_GAT"/>
+    <possedeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_FraisMedicaux"/>
+    <appliqueFranchise rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise_Sante_001"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_DeclarationRisque"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_PaiementPrime"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_DeclarationSinistre"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_MaladieAnterieure"/>
+    <numeroContrat>CT-2026-004</numeroContrat>
+    <dateDebutContrat rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-01-01</dateDebutContrat>
+    <dateFinContrat rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-12-31</dateFinContrat>
+    <montantPrime rdf:datatype="http://www.w3.org/2001/XMLSchema#float">600.0</montantPrime>
+    <estValide rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</estValide>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#proposeGarantie">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <rdfs:label xml:lang="fr">propose la garantie</rdfs:label>
+    <rdfs:comment xml:lang="fr">Catalogue de la compagnie : un contrat ne peut contenir que des garanties proposées par son assureur.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">offre</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#tauxIndemnisation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#BaremeIndemnisation"/>
+    <rdfs:range rdf:nodeID="Nab7b1aeacdb04309a4c6d602049ca359"/>
+    <rdfs:label xml:lang="fr">taux d'indemnisation</rdfs:label>
+    <rdfs:comment xml:lang="fr">Taux compris entre 0 et 1 (0.8 = 80 %).</rdfs:comment>
+    <skos:altLabel xml:lang="fr">pourcentage</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#aPourContrat">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assure"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:label xml:lang="fr">a pour contrat</rdfs:label>
+    <rdfs:comment xml:lang="fr">Relie un assuré aux contrats qu'il a souscrits.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">a souscrit</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#ContratVie">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:subClassOf rdf:nodeID="N2a62273af3114d91bff2ac6457809698"/>
+    <rdfs:label xml:lang="fr">Contrat vie</rdfs:label>
+    <skos:altLabel xml:lang="fr">assurance vie</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne"/>
+    <rdfs:subClassOf rdf:nodeID="N6cd05242cdc64f05aced0959b4d32152"/>
+    <rdfs:label xml:lang="fr">Expert</rdfs:label>
+    <rdfs:comment xml:lang="fr">Expert chargé d'évaluer les dommages d'un sinistre.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">expert en sinistres</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Assure_Youssef">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assure"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne"/>
+    <aPourContrat rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_004"/>
+    <aPourContrat rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_007"/>
+    <declareSinistre rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre_2025_031"/>
+    <declareSinistre rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre_2026_003"/>
+    <nom>Gharbi</nom>
+    <prenom>Youssef</prenom>
+    <cin>12345603</cin>
+    <adresse>Ariana</adresse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Assure_Amine">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assure"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne"/>
+    <aPourContrat rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_001"/>
+    <aPourContrat rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_002"/>
+    <declareSinistre rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre_2024_017"/>
+    <nom>Ben Salah</nom>
+    <prenom>Amine</prenom>
+    <cin>12345601</cin>
+    <adresse>Tunis</adresse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert_Nabil">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne"/>
+    <travaillePour rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur_GAT"/>
+    <nom>Chaabane</nom>
+    <prenom>Nabil</prenom>
+    <cin>12345613</cin>
+    <adresse>Tunis</adresse>
+    <specialite>Médical</specialite>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_ClesSurVehicule">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ClauseExclusion"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <exclut rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Vol_Auto"/>
+    <libelleClause>Exclusion du vol avec clés laissées dans le véhicule</libelleClause>
+    <texteClause>Le vol du véhicule n'est pas garanti lorsque les clés ont été laissées sur ou dans le véhicule.</texteClause>
+    <referenceLegale>Conditions générales du contrat</referenceLegale>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#dateDebutContrat">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:label xml:lang="fr">date de début du contrat</rdfs:label>
+    <skos:altLabel xml:lang="fr">date de souscription</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Vol_Auto">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieVol"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <libelleGarantie>Vol du véhicule</libelleGarantie>
+    <plafondGarantie rdf:datatype="http://www.w3.org/2001/XMLSchema#float">30000.0</plafondGarantie>
+    <estGarantieDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_002"/>
+    <estGarantieDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_006"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ne62549180fc244f0850921184c236ceb">
+    <rdf:first rdf:nodeID="N47d8834cbff846a3af59753052b7a5bf"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert_Karim">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne"/>
+    <travaillePour rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur_STAR"/>
+    <travaillePour rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur_GAT"/>
+    <nom>Haddad</nom>
+    <prenom>Karim</prenom>
+    <cin>12345611</cin>
+    <adresse>Tunis</adresse>
+    <specialite>Automobile</specialite>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_003">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ContratHabitation"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <assurePar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur_COMAR"/>
+    <possedeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Incendie_Hab"/>
+    <possedeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_DegatsEaux_Hab"/>
+    <possedeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Vol_Hab"/>
+    <possedeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_RC_Habitation"/>
+    <appliqueFranchise rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise_Hab_001"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_DeclarationRisque"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_PaiementPrime"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_DeclarationSinistre"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_FauteIntentionnelle"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_DefautEntretien"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_Guerre"/>
+    <numeroContrat>CT-2025-003</numeroContrat>
+    <dateDebutContrat rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-03-01</dateDebutContrat>
+    <dateFinContrat rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2027-02-28</dateFinContrat>
+    <montantPrime rdf:datatype="http://www.w3.org/2001/XMLSchema#float">320.0</montantPrime>
+    <estValide rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</estValide>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#adresse">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:nodeID="Na0babb130f824fceac9f9defd2cea119"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="fr">adresse</rdfs:label>
+    <skos:altLabel xml:lang="fr">ville</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Indemnisation_003">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Indemnisation"/>
+    <suitBareme rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Bareme_Sante_2026"/>
+    <montantIndemnisation rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1645.0</montantIndemnisation>
+    <dateIndemnisation rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-10</dateIndemnisation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#estExpertisePar">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert"/>
+    <rdfs:label xml:lang="fr">est expertisé par</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N15bcc5363ebc49cab15370239a6abf33">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne"/>
+    <rdf:rest rdf:nodeID="N6035136aa5a342009c3a08211755a7e5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_001">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ContratAutomobile"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <assurePar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur_STAR"/>
+    <possedeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_RC_Auto"/>
+    <appliqueFranchise rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise_Auto_001"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_DeclarationRisque"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_PaiementPrime"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_DeclarationSinistre"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_AssuranceObligatoireRC"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_FauteIntentionnelle"/>
+    <numeroContrat>CT-2024-001</numeroContrat>
+    <dateDebutContrat rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-01-15</dateDebutContrat>
+    <dateFinContrat rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-01-14</dateFinContrat>
+    <montantPrime rdf:datatype="http://www.w3.org/2001/XMLSchema#float">450.0</montantPrime>
+    <estValide rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</estValide>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Assure_Ines">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assure"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne"/>
+    <aPourContrat rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_005"/>
+    <nom>Mansouri</nom>
+    <prenom>Ines</prenom>
+    <cin>12345604</cin>
+    <adresse>Nabeul</adresse>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N93aee028afaa44f9bd19068c115c6684">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#DommageMateriel"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf419da4ad00f419c9db4f61a5e663fca">
+    <rdf:first rdf:nodeID="Na56fb396608440088dfa69117c08a135"/>
+    <rdf:rest rdf:nodeID="N8020baff34df4f199dd70a744e2ccac2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur_STAR">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur"/>
+    <proposeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_RC_Auto"/>
+    <proposeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Vol_Auto"/>
+    <proposeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Deces"/>
+    <definitBareme rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Bareme_Auto_2024"/>
+    <raisonSociale>STAR Assurances</raisonSociale>
+    <adresse>Tunis</adresse>
+    <estAssureDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_005"/>
+    <estAssureDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_001"/>
+    <estAssureDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_002"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Indemnisation_042">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Indemnisation"/>
+    <suitBareme rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Bareme_Habitation_2025"/>
+    <montantIndemnisation rdf:datatype="http://www.w3.org/2001/XMLSchema#float">11700.0</montantIndemnisation>
+    <dateIndemnisation rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-12-15</dateIndemnisation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Materiel_031">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#DommageMateriel"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+    <descriptionDommage>Plafond et peintures endommagés par l'infiltration</descriptionDommage>
+    <montantEstime rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2800.0</montantEstime>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreAutomobile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdfs:subClassOf rdf:nodeID="Nf2f7f91d67c2492d9b010e1c3725e022"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreCouvert"/>
+    <rdfs:label xml:lang="fr">Sinistre automobile</rdfs:label>
+    <skos:altLabel xml:lang="fr">accident de voiture</skos:altLabel>
+    <skos:altLabel xml:lang="fr">accident de la route</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7cfcea1f97784975a81f4f79dbda4ead">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Indemnisation"/>
+    <rdf:rest rdf:nodeID="N15bcc5363ebc49cab15370239a6abf33"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Assure_Mehdi">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assure"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne"/>
+    <aPourContrat rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_006"/>
+    <declareSinistre rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre_2025_058"/>
+    <nom>Jaziri</nom>
+    <prenom>Mehdi</prenom>
+    <cin>12345605</cin>
+    <adresse>Sfax</adresse>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_005">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ContratVie"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <assurePar rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur_STAR"/>
+    <possedeGarantie rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Deces"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_DeclarationRisque"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_PaiementPrime"/>
+    <contientClause rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_Suicide"/>
+    <numeroContrat>CT-2020-005</numeroContrat>
+    <dateDebutContrat rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-05-01</dateDebutContrat>
+    <dateFinContrat rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2040-04-30</dateFinContrat>
+    <montantPrime rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1200.0</montantPrime>
+    <estValide rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</estValide>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N64e5eff24f3f463384e1ee936474a9c0">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise"/>
+    <rdf:rest rdf:nodeID="N4399662187b7440cbbb4438a25b4018c"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#descriptionSinistre">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="fr">description du sinistre</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N6cd05242cdc64f05aced0959b4d32152">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#travaillePour"/>
+    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nd886ecb39e4f42d7a43354a828ed154a">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="N93bc33283e8e4ddb83607dec1c02d861"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nd808d0a3abd347bebdac24e48035757d">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+    <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreGrave"/>
+    <swrl:argument1 rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#s"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#contientClause">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <rdfs:label xml:lang="fr">contient la clause</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N8020baff34df4f199dd70a744e2ccac2">
+    <rdf:first rdf:nodeID="Nf4330c4d35424a1bb6c26d7da80cdfc4"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N51c9e1a8222045e289a0e59fba781e25">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreAutomobile"/>
+    <rdf:rest rdf:nodeID="Nb4eb43dbe93a49fab96c3293f8b503eb"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="fr">Dommage</rdfs:label>
+    <skos:altLabel xml:lang="fr">dégât</skos:altLabel>
+    <skos:altLabel xml:lang="fr">préjudice</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#referenceLegale">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="fr">référence légale</rdfs:label>
+    <rdfs:comment xml:lang="fr">Texte de loi ou document contractuel sur lequel repose la clause.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">base légale</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nbbebcf6fc6364556ac1defbe61cfb9ab">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur"/>
+    <rdf:rest rdf:nodeID="N7e8bf47d272448bd8f58facfde6d3e3e"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#estValide">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:label xml:lang="fr">est valide</rdfs:label>
+    <rdfs:comment xml:lang="fr">Valeur cohérente avec dateFinContrat à la date du 2026-10-27. Le back-end peut la recalculer avec FILTER(?dateFin &gt;= NOW()).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N27c92ac349eb46c7a8f07843c4320810">
+    <rdfs:comment>Un sinistre qui cause un dommage corporel est considere comme grave</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+    <swrl:body rdf:nodeID="Nb2b7b0b2abdf4dcfb43dbb4b9f7387fb"/>
+    <swrl:head rdf:nodeID="N570b7d5ce7be4374b7d10dd16ed823e2"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N13a6424e4367499eb0f8af3113a91cb6">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="N8f0ca0a44186488abe0dafc151d7c242"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#ClauseExclusion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <owl:disjointWith rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ClauseObligatoire"/>
+    <rdfs:label xml:lang="fr">Clause d'exclusion</rdfs:label>
+    <rdfs:comment xml:lang="fr">Clause qui exclut certains cas de la couverture d'une garantie.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">exclusion</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert_Leila">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne"/>
+    <travaillePour rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur_COMAR"/>
+    <nom>Bouaziz</nom>
+    <prenom>Leila</prenom>
+    <cin>12345612</cin>
+    <adresse>Sousse</adresse>
+    <specialite>Bâtiment</specialite>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#estGarantieDe">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#possedeGarantie"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:label xml:lang="fr">est une garantie de</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#nom">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="fr">nom</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Incendie_Hab">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieIncendie"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <libelleGarantie>Incendie et explosions</libelleGarantie>
+    <plafondGarantie rdf:datatype="http://www.w3.org/2001/XMLSchema#float">150000.0</plafondGarantie>
+    <estGarantieDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_003"/>
+    <estGarantieDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_007"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ncd7731d68dac4504829a71c50487a1a4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+    <owl:members rdf:nodeID="N1559545cbcc54f1195959871fb55d4fa"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#prenom">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="fr">prénom</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#exclut">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ClauseExclusion"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <rdfs:label xml:lang="fr">exclut</rdfs:label>
+    <rdfs:comment xml:lang="fr">Garantie dont la clause d'exclusion limite la couverture.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N570b7d5ce7be4374b7d10dd16ed823e2">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="Nd808d0a3abd347bebdac24e48035757d"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#montantIndemnisation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Indemnisation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:label xml:lang="fr">montant de l'indemnisation</rdfs:label>
+    <skos:altLabel xml:lang="fr">montant remboursé</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N9c0a4e74f65d4effb4f7653653b1ba93">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ContratSante"/>
+    <rdf:rest rdf:nodeID="N6c5cc6b5cca54a2ea9baf6e154522795"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#descriptionDommage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="fr">description du dommage</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N2a62273af3114d91bff2ac6457809698">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#possedeGarantie"/>
+    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieDeces"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7657d3c08da84d5f9fa4521cccfadb3c">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:first>Cloture</rdf:first>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na0babb130f824fceac9f9defd2cea119">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="N1b85abbc625340caabcff7581073a9ba"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieDeces">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <rdfs:label xml:lang="fr">Garantie décès</rdfs:label>
+    <skos:altLabel xml:lang="fr">capital décès</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise_Sante_001">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise"/>
+    <montantFranchise rdf:datatype="http://www.w3.org/2001/XMLSchema#float">50.0</montantFranchise>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_Guerre">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ClauseExclusion"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <exclut rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Incendie_Hab"/>
+    <libelleClause>Exclusion des risques de guerre et d'émeutes</libelleClause>
+    <texteClause>Les dommages résultant d'une guerre, d'une émeute ou d'un mouvement populaire ne sont pas garantis.</texteClause>
+    <referenceLegale>Conditions générales du contrat</referenceLegale>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N6345657b8ba240cbbd2eda856ff21e3c">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#DommageCorporel"/>
+    <rdf:rest rdf:nodeID="N5879e9e98ab24f71865e4601867d0b46"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="fr">Garantie</rdfs:label>
+    <rdfs:comment xml:lang="fr">Risque couvert par un contrat, dans la limite d'un plafond.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">couverture</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N80951e09283f48e8bc3ae1eb18cfce1c">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+    <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <swrl:argument1 rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#s"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="fr">Assureur</rdfs:label>
+    <rdfs:comment xml:lang="fr">Compagnie d'assurance qui porte les contrats.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">compagnie d'assurance</skos:altLabel>
+    <skos:altLabel xml:lang="fr">compagnie</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieIncendie">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <rdfs:label xml:lang="fr">Garantie incendie</rdfs:label>
+    <skos:altLabel xml:lang="fr">incendie</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf70a075e99e440b695f77cd29345678e">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#causeDommage"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N93bc33283e8e4ddb83607dec1c02d861">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdf:rest rdf:nodeID="Ne62549180fc244f0850921184c236ceb"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ncafccefef4da48bcbdb4236d7b6c8a7e">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:nodeID="N3b66588f446b475c872913e77892bb1b"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nc46c94679e824fd79a2e9aab228a4016">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#possedeGarantie"/>
+    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf4330c4d35424a1bb6c26d7da80cdfc4">
+    <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</xsd:maxInclusive>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N47d8834cbff846a3af59753052b7a5bf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#estCouvertPar"/>
+    <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#ClauseObligatoire">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <rdfs:label xml:lang="fr">Clause obligatoire</rdfs:label>
+    <rdfs:comment xml:lang="fr">Obligation imposée à l'assuré ou à l'assureur.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">obligation</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N9da6b827928e4e3182d9aef3fa6f20be">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:first>Indemnise</rdf:first>
+    <rdf:rest rdf:nodeID="N25480da801d3465d9bbb6306cbcdb938"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Immateriel_042">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#DommageImmateriel"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+    <descriptionDommage>Frais de relogement temporaire</descriptionDommage>
+    <montantEstime rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1500.0</montantEstime>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise_Auto_002">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise"/>
+    <montantFranchise rdf:datatype="http://www.w3.org/2001/XMLSchema#float">300.0</montantFranchise>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#montantFranchise">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:label xml:lang="fr">montant de la franchise</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#DommageImmateriel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+    <rdfs:label xml:lang="fr">Dommage immatériel</rdfs:label>
+    <rdfs:comment xml:lang="fr">Préjudice financier ou perte de jouissance (frais de relogement, perte d'exploitation...).</rdfs:comment>
+    <skos:altLabel xml:lang="fr">préjudice financier</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Bareme_Sante_2026">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#BaremeIndemnisation"/>
+    <sAppliqueA rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_FraisMedicaux"/>
+    <libelleBareme>Barème frais médicaux 2026</libelleBareme>
+    <tauxIndemnisation rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.7</tauxIndemnisation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Bareme_Auto_2024">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#BaremeIndemnisation"/>
+    <sAppliqueA rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_RC_Auto"/>
+    <sAppliqueA rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Vol_Auto"/>
+    <libelleBareme>Barème dommages matériels automobile 2024</libelleBareme>
+    <tauxIndemnisation rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.8</tauxIndemnisation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_Suicide">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ClauseExclusion"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <exclut rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Deces"/>
+    <libelleClause>Exclusion du suicide la première année</libelleClause>
+    <texteClause>Le décès par suicide survenu au cours de la première année du contrat n'est pas couvert.</texteClause>
+    <referenceLegale>Conditions générales du contrat</referenceLegale>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="Nc46c94679e824fd79a2e9aab228a4016"/>
+    <rdfs:subClassOf rdf:nodeID="Ndcf4ea67e94d4fe69da09f1d1f45a5f0"/>
+    <owl:hasKey rdf:nodeID="N118fbd766b6847719c28121f4584d0a4"/>
+    <rdfs:label xml:lang="fr">Contrat d'assurance</rdfs:label>
+    <rdfs:comment xml:lang="fr">Contrat liant un assuré à un assureur ; identifié de manière unique par son numéro.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">contrat</skos:altLabel>
+    <skos:altLabel xml:lang="fr">police d'assurance</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N913e8dd9aa09441c94de3659ed0f09d8">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+    <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#causeDommage"/>
+    <swrl:argument1 rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#s"/>
+    <swrl:argument2 rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#d"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Bareme_Corporel_2025">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#BaremeIndemnisation"/>
+    <sAppliqueA rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_RC_Auto"/>
+    <libelleBareme>Barème dommages corporels 2025</libelleBareme>
+    <tauxIndemnisation rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</tauxIndemnisation>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N650dd31da8ff43fba93890f47a5e7f28">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="N913e8dd9aa09441c94de3659ed0f09d8"/>
+    <rdf:rest rdf:nodeID="N13a6424e4367499eb0f8af3113a91cb6"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nad41aafb06b2456e9b4ff84a6be4785b">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreSante"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_DegatsEaux_Hab">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieDegatsDesEaux"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <libelleGarantie>Dégâts des eaux</libelleGarantie>
+    <plafondGarantie rdf:datatype="http://www.w3.org/2001/XMLSchema#float">20000.0</plafondGarantie>
+    <estGarantieDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_007"/>
+    <estGarantieDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_003"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N0512aa8f5a3146408e93483223d716a9">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieIncendie"/>
+    <rdf:rest rdf:nodeID="N32855e25ae664a6aa6a9320fb10efac1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#causeDommage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+    <rdfs:label xml:lang="fr">cause le dommage</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nab7b1aeacdb04309a4c6d602049ca359">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <owl:withRestrictions rdf:nodeID="Nf419da4ad00f419c9db4f61a5e663fca"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Materiel_017">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#DommageMateriel"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+    <descriptionDommage>Pare-chocs et aile avant du véhicule tiers endommagés</descriptionDommage>
+    <montantEstime rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4575.0</montantEstime>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Materiel_058">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#DommageMateriel"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+    <descriptionDommage>Dégâts sur le véhicule adverse</descriptionDommage>
+    <montantEstime rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3200.0</montantEstime>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_Vol_Hab">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieVol"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <libelleGarantie>Vol et cambriolage</libelleGarantie>
+    <plafondGarantie rdf:datatype="http://www.w3.org/2001/XMLSchema#float">15000.0</plafondGarantie>
+    <estGarantieDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_003"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N0b2c061c6e9442c29b4cff578d26805f">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <owl:oneOf rdf:nodeID="N035f4cbaf57f49e294d452ad21ac096b"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreGrave">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdfs:label xml:lang="fr">Sinistre grave</rdfs:label>
+    <rdfs:comment xml:lang="fr">Sinistre ayant causé un dommage corporel (inféré par la règle SWRL).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause_Exclusion_DefautEntretien">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ClauseExclusion"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <exclut rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_DegatsEaux_Hab"/>
+    <libelleClause>Exclusion pour défaut d'entretien</libelleClause>
+    <texteClause>Les dégâts des eaux résultant d'un défaut d'entretien manifeste des canalisations ne sont pas garantis.</texteClause>
+    <referenceLegale>Conditions générales du contrat</referenceLegale>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="fr">Franchise</rdfs:label>
+    <rdfs:comment xml:lang="fr">Somme qui reste à la charge de l'assuré lors d'une indemnisation.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nb2b7b0b2abdf4dcfb43dbb4b9f7387fb">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+    <rdf:first rdf:nodeID="N80951e09283f48e8bc3ae1eb18cfce1c"/>
+    <rdf:rest rdf:nodeID="N650dd31da8ff43fba93890f47a5e7f28"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#dateFinContrat">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:label xml:lang="fr">date de fin du contrat</rdfs:label>
+    <skos:altLabel xml:lang="fr">date d'expiration</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#assurePar">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#estAssureDe"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur"/>
+    <rdfs:label xml:lang="fr">assuré par</rdfs:label>
+    <rdfs:comment xml:lang="fr">Compagnie d'assurance qui porte le contrat.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Corporel_003">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#DommageCorporel"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+    <descriptionDommage>Frais d'hospitalisation et d'intervention chirurgicale</descriptionDommage>
+    <montantEstime rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2400.0</montantEstime>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Corporel_058">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#DommageCorporel"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+    <descriptionDommage>Fracture du bras du conducteur adverse</descriptionDommage>
+    <montantEstime rdf:datatype="http://www.w3.org/2001/XMLSchema#float">8000.0</montantEstime>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#cin">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="fr">numéro CIN</rdfs:label>
+    <skos:altLabel xml:lang="fr">carte d'identité</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N9da02cabed364b9c94bfe37612e5396c">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#cin"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N6035136aa5a342009c3a08211755a7e5">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7b3a77135ecc444aaaea0755027966fd">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#travaillePour">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Expert"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur"/>
+    <rdfs:label xml:lang="fr">travaille pour</rdfs:label>
+    <rdfs:comment xml:lang="fr">Compagnies qui mandatent l'expert : il n'expertise que les sinistres de leurs contrats.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">mandaté par</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_RC_Habitation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieResponsabiliteCivile"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <libelleGarantie>Responsabilité civile habitation</libelleGarantie>
+    <plafondGarantie rdf:datatype="http://www.w3.org/2001/XMLSchema#float">20000.0</plafondGarantie>
+    <estGarantieDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_003"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage_Materiel_042">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#DommageMateriel"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+    <descriptionDommage>Cuisine et mobilier détruits par le feu</descriptionDommage>
+    <montantEstime rdf:datatype="http://www.w3.org/2001/XMLSchema#float">11650.0</montantEstime>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#estAssureDe">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:label xml:lang="fr">est l'assureur de</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N035f4cbaf57f49e294d452ad21ac096b">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:first>Declare</rdf:first>
+    <rdf:rest rdf:nodeID="Ndf5497cfe97a42aca2596c9c21e5a562"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ndf5497cfe97a42aca2596c9c21e5a562">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:first>EnExpertise</rdf:first>
+    <rdf:rest rdf:nodeID="N9da6b827928e4e3182d9aef3fa6f20be"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Personne">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:hasKey rdf:nodeID="N9da02cabed364b9c94bfe37612e5396c"/>
+    <rdfs:label xml:lang="fr">Personne</rdfs:label>
+    <rdfs:comment xml:lang="fr">Personne physique, identifiée de manière unique par son numéro CIN.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#possedeGarantie">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <rdfs:label xml:lang="fr">possède la garantie</rdfs:label>
+    <skos:altLabel xml:lang="fr">couvre</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#libelleGarantie">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="fr">libellé de la garantie</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise_Auto_001">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise"/>
+    <montantFranchise rdf:datatype="http://www.w3.org/2001/XMLSchema#float">200.0</montantFranchise>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#plafondGarantie">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:label xml:lang="fr">plafond de la garantie</rdfs:label>
+    <skos:altLabel xml:lang="fr">montant maximum</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#lieuSinistre">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="fr">lieu du sinistre</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N6c5cc6b5cca54a2ea9baf6e154522795">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ContratVie"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4335692dc232496d8b122b5a111b5e79">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieVol"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#ContratSante">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:subClassOf rdf:nodeID="Nef7b884b137a48e2a62f314d47af4dc5"/>
+    <rdfs:label xml:lang="fr">Contrat santé</rdfs:label>
+    <skos:altLabel xml:lang="fr">assurance santé</skos:altLabel>
+    <skos:altLabel xml:lang="fr">assurance maladie</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N118fbd766b6847719c28121f4584d0a4">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#numeroContrat"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreSante">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdfs:label xml:lang="fr">Sinistre santé</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N3b66588f446b475c872913e77892bb1b">
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#definitBareme"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N8f0ca0a44186488abe0dafc151d7c242">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+    <swrl:classPredicate rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#DommageCorporel"/>
+    <swrl:argument1 rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#d"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="fr">Clause légale</rdfs:label>
+    <rdfs:comment xml:lang="fr">Disposition légale ou contractuelle contenue dans un contrat d'assurance.</rdfs:comment>
+    <skos:altLabel xml:lang="fr">clause</skos:altLabel>
+    <skos:altLabel xml:lang="fr">condition</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#d">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nea213af298934723ba11cc54b213a67b">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#ContratAutomobile"/>
+    <rdf:rest rdf:nodeID="N9d743e5151564c21bc0b9a81c1746784"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise_Hab_001">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise"/>
+    <montantFranchise rdf:datatype="http://www.w3.org/2001/XMLSchema#float">150.0</montantFranchise>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na1cc5528ee374e118139b1586ef38ae6">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieFraisMedicaux"/>
+    <rdf:rest rdf:nodeID="N0512aa8f5a3146408e93483223d716a9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie_FraisMedicaux">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieFraisMedicaux"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <libelleGarantie>Frais médicaux et d'hospitalisation</libelleGarantie>
+    <plafondGarantie rdf:datatype="http://www.w3.org/2001/XMLSchema#float">10000.0</plafondGarantie>
+    <estGarantieDe rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat_004"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#appliqueFranchise">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Franchise"/>
+    <rdfs:label xml:lang="fr">applique la franchise</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#dateIndemnisation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Indemnisation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:label xml:lang="fr">date d'indemnisation</rdfs:label>
+    <skos:altLabel xml:lang="fr">date de paiement</skos:altLabel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N2e6ca9b16a174191ad3f639f8d112a60">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieDegatsDesEaux"/>
+    <rdf:rest rdf:nodeID="Na1cc5528ee374e118139b1586ef38ae6"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N45f3983790114aefb9c687a79d98ad88">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+    <owl:members rdf:nodeID="Nbbebcf6fc6364556ac1defbe61cfb9ab"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4399662187b7440cbbb4438a25b4018c">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Garantie"/>
+    <rdf:rest rdf:nodeID="N7cfcea1f97784975a81f4f79dbda4ead"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N1b85abbc625340caabcff7581073a9ba">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Assureur"/>
+    <rdf:rest rdf:nodeID="N7b3a77135ecc444aaaea0755027966fd"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#dateSinistre">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:label xml:lang="fr">date du sinistre</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nac760cbd5b4348ef8d3ad483f75695ab">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+    <owl:members rdf:nodeID="N6345657b8ba240cbbd2eda856ff21e3c"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nc6e2ad2bf1b14360b7e77178c6ff426d">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#suitBareme"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#suitBareme">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Indemnisation"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#BaremeIndemnisation"/>
+    <rdfs:label xml:lang="fr">suit le barème</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N37ba264e1d784c1bba002aac358ef706">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdf:rest rdf:nodeID="N04f614fc60844986b2e758dbe65d74c8"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N32855e25ae664a6aa6a9320fb10efac1">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#GarantieResponsabiliteCivile"/>
+    <rdf:rest rdf:nodeID="N4335692dc232496d8b122b5a111b5e79"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#concerneContrat">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Sinistre"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Contrat"/>
+    <rdfs:label xml:lang="fr">concerne le contrat</rdfs:label>
+    <rdfs:comment xml:lang="fr">Contrat au titre duquel le sinistre est déclaré.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#s">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7e8bf47d272448bd8f58facfde6d3e3e">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#BaremeIndemnisation"/>
+    <rdf:rest rdf:nodeID="N50f6f370e81a4719baff270b52e4cae7"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N04f614fc60844986b2e758dbe65d74c8">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Dommage"/>
+    <rdf:rest rdf:nodeID="N64e5eff24f3f463384e1ee936474a9c0"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres#libelleBareme">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#BaremeIndemnisation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="fr">libellé du barème</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N50f6f370e81a4719baff270b52e4cae7">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#Clause"/>
+    <rdf:rest rdf:nodeID="N37ba264e1d784c1bba002aac358ef706"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/assurance-sinistres">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:comment xml:lang="fr">Ontologie Assurance et Gestion des Sinistres - Projet Web Semantique. Elle modélise les types de contrats d'assurance, les garanties, les clauses légales, les types de dommages et les barèmes d'indemnisation.</rdfs:comment>
+    <owl:versionInfo>2.1</owl:versionInfo>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#altLabel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nb4eb43dbe93a49fab96c3293f8b503eb">
+    <rdf:first rdf:resource="http://www.semanticweb.org/ontologies/assurance-sinistres#SinistreHabitation"/>
+    <rdf:rest rdf:nodeID="Nad41aafb06b2456e9b4ff84a6be4785b"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na56fb396608440088dfa69117c08a135">
+    <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.0</xsd:minInclusive>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#date">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+  </rdf:Description>
+</rdf:RDF>

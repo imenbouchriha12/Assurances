@@ -1,0 +1,10 @@
+# CLAUSES LEGALES : exclusions d'un contrat et garanties qu'elles limitent
+PREFIX :     <http://www.semanticweb.org/ontologies/assurance-sinistres#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?clause ?texte ?garantie ?reference WHERE {
+  ?c :numeroContrat "CT-2025-003" ; :contientClause ?cl .
+  ?cl a :ClauseExclusion ; :libelleClause ?clause ; :texteClause ?texte ;
+      :referenceLegale ?reference ; :exclut/:libelleGarantie ?garantie .
+}
