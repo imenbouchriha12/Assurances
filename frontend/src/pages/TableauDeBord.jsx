@@ -4,7 +4,7 @@ import { useDonnees } from "../api.js";
 import { Barres, Tuile } from "../components/Graphiques.jsx";
 import { Icone } from "../components/icones.jsx";
 import { TableSinistres } from "../components/Tables.jsx";
-import { Etat, libelleStatut, montant } from "../components/ui.jsx";
+import { Etat, libelleStatut, marqueStatut, montant } from "../components/ui.jsx";
 
 const decimal = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 });
 const somme = (lignes, champ) => lignes.reduce((t, l) => t + (l[champ] ?? 0), 0);
@@ -55,7 +55,7 @@ export default function TableauDeBord() {
               <Barres titre="Sinistres par type" icone="sinistres" resume={`${s.totaux.nbSinistres} au total`}
                       donnees={s.sinistresParType.map((x) => ({ label: x.label, valeur: x.nombre }))} />
               <Barres titre="Sinistres par statut" icone="graphique" resume={`${aTraiter ?? 0} à traiter`}
-                      donnees={s.sinistresParStatut.map((x) => ({ label: libelleStatut(x.statut), valeur: x.nombre }))} />
+                      donnees={s.sinistresParStatut.map((x) => ({ label: libelleStatut(x.statut), valeur: x.nombre, ...marqueStatut(x.statut) }))} />
               <Barres titre="Indemnisé par assureur" icone="entreprise" format={montant} resume={montant(s.totaux.totalIndemnise)}
                       donnees={s.indemnisationsParAssureur.map((x) => ({
                         label: x.raisonSociale, valeur: x.total, detail: `${x.nombre} indemnisation(s)`,

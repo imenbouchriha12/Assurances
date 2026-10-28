@@ -17,6 +17,8 @@ export function Tuile({ titre, valeur, detail, icone }) {
 /**
  * Barres horizontales à une seule série : une couleur, pas de légende (le titre nomme la série),
  * valeur écrite en bout de barre, info-bulle au survol ou au focus clavier.
+ * Une barre peut porter sa propre couleur et son icône (`couleur`, `icone`) quand elle représente
+ * un statut : les mêmes que sur les badges, et le libellé reste écrit.
  */
 export function Barres({ titre, donnees, format = (v) => v, icone, resume }) {
   const max = Math.max(0, ...donnees.map((d) => d.valeur)) || 1;
@@ -33,9 +35,12 @@ export function Barres({ titre, donnees, format = (v) => v, icone, resume }) {
         <ul className="barres">
           {donnees.map((d) => (
             <li key={d.label} tabIndex={0} aria-label={`${d.label} : ${format(d.valeur)}`}>
-              <span className="barre-label">{d.label}</span>
+              <span className="barre-label">
+                {d.icone && <span className="barre-icone" aria-hidden="true" style={{ color: d.couleur }}>{d.icone}</span>}
+                {d.label}
+              </span>
               <span className="barre-piste">
-                <span className="barre-remplie" style={{ width: `${(d.valeur / max) * 100}%` }} />
+                <span className="barre-remplie" style={{ width: `${(d.valeur / max) * 100}%`, background: d.couleur }} />
               </span>
               <span className="barre-valeur">{format(d.valeur)}</span>
               <span className="infobulle" role="tooltip">
