@@ -3,6 +3,9 @@
 Aucune API de LLM n'est utilisée. La traduction repose sur **spaCy** (analyse linguistique),
 **scikit-learn** (classification de l'intention) et sur l'**ontologie elle-même** (lexique et chemins entre concepts).
 
+> Explication détaillée, pas à pas, avec exemples réels et guide d'extension :
+> [FONCTIONNEMENT.md](FONCTIONNEMENT.md).
+
 ## Outils
 
 | Outil | Rôle |
