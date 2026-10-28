@@ -1,56 +1,98 @@
 import { Icone } from "./icones.jsx";
 
-/** Indicateur chiffré (pas de graphique pour une valeur seule). */
+/** Indicateur chiffré (pas de graphique pour une valeur seule) : texte à gauche, pastille d'icône à droite. */
 export function Tuile({ titre, valeur, detail, icone }) {
   return (
     <div className="tuile">
-      <div className="tuile-entete">
+      <div className="tuile-texte">
         <span className="tuile-titre">{titre}</span>
-        {icone && <span className="tuile-icone"><Icone nom={icone} taille={18} /></span>}
+        <span className="tuile-valeur">{valeur}</span>
+        {detail && <span className="tuile-detail">{detail}</span>}
       </div>
-      <span className="tuile-valeur">{valeur}</span>
-      {detail && <span className="tuile-detail">{detail}</span>}
+      {icone && <span className="tuile-icone"><Icone nom={icone} taille={20} /></span>}
     </div>
   );
 }
 
-/**
- * Barres horizontales à une seule série : une couleur, pas de légende (le titre nomme la série),
- * valeur écrite en bout de barre, info-bulle au survol ou au focus clavier.
- * Une barre peut porter sa propre couleur et son icône (`couleur`, `icone`) quand elle représente
- * un statut : les mêmes que sur les badges, et le libellé reste écrit.
- */
-export function Barres({ titre, donnees, format = (v) => v, icone, resume }) {
-  const max = Math.max(0, ...donnees.map((d) => d.valeur)) || 1;
+/** Barre de progression (part entre 0 et 1), couleur de l'accent sauf indication contraire. */
+export function Progression({ part, couleur, libelle }) {
   return (
-    <figure className="carte graphique">
-      <figcaption>
-        {icone && <span className="tuile-icone"><Icone nom={icone} taille={16} /></span>}
-        <span>{titre}</span>
-        {resume && <span className="graphique-resume">{resume}</span>}
-      </figcaption>
-      {donnees.length === 0 ? (
-        <p className="discret">Aucune donnée.</p>
-      ) : (
-        <ul className="barres">
-          {donnees.map((d) => (
-            <li key={d.label} tabIndex={0} aria-label={`${d.label} : ${format(d.valeur)}`}>
-              <span className="barre-label">
-                {d.icone && <span className="barre-icone" aria-hidden="true" style={{ color: d.couleur }}>{d.icone}</span>}
-                {d.label}
-              </span>
-              <span className="barre-piste">
-                <span className="barre-remplie" style={{ width: `${(d.valeur / max) * 100}%`, background: d.couleur }} />
-              </span>
-              <span className="barre-valeur">{format(d.valeur)}</span>
-              <span className="infobulle" role="tooltip">
-                <strong>{d.label}</strong>
-                <span>{format(d.valeur)}{d.detail ? ` · ${d.detail}` : ""}</span>
-              </span>
-            </li>
-          ))}
-        </ul>
-      )}
-    </figure>
+    <span className="progression" role="img" aria-label={libelle ?? `${Math.round(part * 100)} %`}>
+      <span style={{ width: `${Math.min(1, Math.max(0, part)) * 100}%`, background: couleur }} />
+    </span>
+  );
+}
+
+/** Mini-indicateur : pastille, libellé, valeur, et barre de progression si `part` est donnée. */
+export function MiniStat({ pastille, couleur, libelle, valeur, part, libellePart }) {
+  return (
+    <div className="mini-stat">
+      <span className="mini-stat-entete">
+        <span className="pastille-icone" style={{ background: couleur }} aria-hidden="true">{pastille}</span>
+        {libelle}
+      </span>
+      <span className="mini-stat-valeur">{valeur}</span>
+      {part != null && <Progression part={part} couleur={couleur} libelle={libellePart} />}
+    </div>
+  );
+}
+
+// Couleurs des catégories (validées : séparation daltonisme, contraste ≥ 3:1, distinctes des statuts).
+// Attribuées par ordre alphabétique du libellé : une catégorie garde sa couleur quel que soit son rang.
+const CATEGORIES = ["#1c5cab", "#d55181", "#1aa3b5"];
+
+/** Anneau : parts d'un tout, total au centre, légende avec valeur et pourcentage (jamais la couleur seule). */
+export function Anneau({ donnees, format = (v) => v, total, libelleTotal }) {
+  const somme = donnees.reduce((t, d) => t + d.valeur, 0) || 1;
+  const ordre = [...donnees].map((d) => d.label).sort((a, b) => a.localeCompare(b));
+  const couleur = (label) => CATEGORIES[ordre.indexOf(label)] ?? "var(--texte-3)";
+  const r = 60;
+  const circonference = 2 * Math.PI * r;
+  let debut = 0;
+  return (
+    <div className="anneau">
+      <svg viewBox="0 0 160 160" role="img" aria-label={donnees.map((d) => `${d.label} : ${format(d.valeur)}`).join(", ")}>
+        <circle cx="80" cy="80" r={r} fill="none" stroke="var(--piste)" strokeWidth="22" />
+        {donnees.map((d) => {
+          const longueur = (d.valeur / somme) * circonference;
+          const segment = (
+            <circle key={d.label} cx="80" cy="80" r={r} fill="none" stroke={couleur(d.label)} strokeWidth="22"
+                    strokeDasharray={`${Math.max(0, longueur - 2)} ${circonference}`} strokeDashoffset={-debut}
+                    transform="rotate(-90 80 80)"><title>{`${d.label} : ${format(d.valeur)}`}</title></circle>
+          );
+          debut += longueur;
+          return segment;
+        })}
+        <text x="80" y="78" textAnchor="middle" className="anneau-total">{total}</text>
+        <text x="80" y="98" textAnchor="middle" className="anneau-libelle">{libelleTotal}</text>
+      </svg>
+      <ul className="anneau-legende">
+        {donnees.map((d) => (
+          <li key={d.label}>
+            <span className="anneau-pastille" style={{ background: couleur(d.label) }} aria-hidden="true" />
+            <span>{d.label}</span>
+            <strong>{format(d.valeur)}</strong>
+            <span className="discret">{Math.round((d.valeur / somme) * 100)} %</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/** Liste répartie : pastille d'icône, libellé, valeur et part, barre de progression. */
+export function Repartition({ donnees, format = (v) => v, icone }) {
+  const somme = donnees.reduce((t, d) => t + d.valeur, 0) || 1;
+  return (
+    <ul className="repartition">
+      {donnees.map((d) => (
+        <li key={d.label}>
+          <span className="pastille-icone"><Icone nom={icone} taille={15} /></span>
+          <strong>{d.label}</strong>
+          <span className="discret">{format(d.valeur)} · {Math.round((d.valeur / somme) * 100)} %</span>
+          <Progression part={d.valeur / somme} />
+        </li>
+      ))}
+    </ul>
   );
 }

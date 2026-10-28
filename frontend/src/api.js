@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const BASE = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+export const BASE = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
 
 function chaineRequete(params) {
   if (!params) return "";
