@@ -7,6 +7,8 @@
    "sinistres de STAR" -> :concerneContrat/:assurePar.
 3. Comparaisons, dates, négations, regroupements ("par statut").
 4. Gabarit SELECT selon l'intention : lister, compter, somme, moyenne, maximum, minimum.
+   Pour lister, une classe liée ("les experts et leur assureur") ou une relation ("où ils travaillent")
+   devient aussi une colonne du résultat (GROUP_CONCAT des libellés).
 """
 from ..sparql import iri, nombre, texte
 from . import synonymes as syn
@@ -35,6 +37,7 @@ class _Construction:
         self.val_lie = False
         self.groupe = None
         self.principale = None
+        self.liees = []  # [(colonne, variable du libellé, libellé de la classe)] ressources liées affichées
 
     # ---------- utilitaires ----------
     def libre(self, nom):
@@ -61,6 +64,27 @@ class _Construction:
             bloc = motif(self.v)
         self.where.append(f"FILTER NOT EXISTS {{ {bloc} }}" if negation else bloc)
         return True
+
+    def libelle(self, cls, y, var):
+        """Lie dans var le libellé lisible de y (prénom et nom pour une personne)."""
+        aff = self.lex.affichage(cls)
+        if aff in ("Assure", "Expert"):
+            p, n = self.libre("prenom"), self.libre("nom")
+            return f'OPTIONAL {{ {y} :prenom {p} ; :nom {n} }} BIND(CONCAT({p}, " ", {n}) AS {var})'
+        prop = syn.AFFICHAGE.get(aff, {}).get("libelle")
+        return f"OPTIONAL {{ {y} :{prop} {var} }}" if prop else ""
+
+    def afficher(self, cls, y):
+        """Pour lister, la ressource liée y devient une colonne ; renvoie le motif qui lie son libellé."""
+        aff = self.lex.affichage(cls)
+        if self.intention != "lister" or y == self.v or not aff or aff == self.aff:
+            return ""
+        colonne = syn.VARIABLES.get(aff, "lie")
+        if any(c == colonne for c, _, _ in self.liees):
+            return ""
+        var = self.libre("libelle")
+        self.liees.append((colonne, var, self.label(aff)))
+        return self.libelle(cls, y, var)
 
     # ---------- 1. classe principale ----------
     def choisir_principale(self):
@@ -108,6 +132,8 @@ class _Construction:
             if statut == "Declare" and self.a.dates:
                 return  # "sinistres déclarés en 2025" : le verbe porte sur la date, pas sur le statut
             return self.statut(m, statut)
+        if "relation" in types:
+            return self.relation(m, premier("relation").valeur)
         if "individu" in types:
             return self.individu(m, premier("individu"))
         if "classe" in types:
@@ -132,9 +158,30 @@ class _Construction:
         if any(e.classe and self.lex.affichage(e.classe) == self.lex.affichage(cls)
                for x in self.a.mentions for e in x.de_type("individu")):
             return
-        if self.lier(cls, lambda y: f"{y} a {iri(cls)} .", m.negation):
+        motif = lambda y: f"{y} a {iri(cls)} ." + ("" if m.negation else f" {self.afficher(cls, y)}".rstrip())  # noqa: E731
+        if self.lier(cls, motif, m.negation):
             self.filtres.append(f"{'sans' if m.negation else 'lié à'} {self.label(cls)}")
             self.noter(m, "classe liée", cls, self.label(cls))
+
+    def relation(self, m, p):
+        """"les experts et où ils travaillent" (travaillePour) : l'autre extrémité de la propriété est affichée.
+        Si la question nomme déjà un individu de cette classe ("experts qui travaillent pour STAR"),
+        le filtre sur l'individu suffit."""
+        for prop, dom, por in self.lex.aretes:
+            if prop != p:
+                continue
+            for de, vers, sens in ((dom, por, 1), (por, dom, -1)):
+                if de not in self.lex.ancetres(self.cls):
+                    continue
+                if any(self.lex.affichage(e.classe) == self.lex.affichage(vers)
+                       for x in self.a.mentions for e in x.de_type("individu")):
+                    return
+                y = self.libre("x")
+                colonne = self.afficher(vers, y)
+                if colonne:
+                    self.where.append(f"OPTIONAL {{ {self.v} {'' if sens == 1 else '^'}:{p} {y} . {colonne} }}")
+                    self.noter(m, "relation", p, self.label(p))
+                return
 
     def qualificatif(self, m, qualif):
         options = self.lex.qualificatifs.get(qualif, set())
@@ -225,14 +272,7 @@ class _Construction:
             cls = options[0]
         else:
             return
-        aff = self.lex.affichage(cls)
-        if aff in ("Assure", "Expert"):
-            libelle = lambda y: (f"OPTIONAL {{ {y} :prenom ?p_ ; :nom ?n_ }} "  # noqa: E731
-                                 f'BIND(CONCAT(?p_, " ", ?n_) AS ?libelle)')
-        else:
-            prop = syn.AFFICHAGE.get(aff, {}).get("libelle")
-            libelle = lambda y: f"OPTIONAL {{ {y} :{prop} ?libelle }}" if prop else ""  # noqa: E731
-        if self.lier(cls, lambda y: f"{y} a {iri(cls)} . BIND({y} AS ?groupe) {libelle(y)}"):
+        if self.lier(cls, lambda y: f"{y} a {iri(cls)} . BIND({y} AS ?groupe) {self.libelle(cls, y, '?libelle')}"):
             self.groupe = self.label(cls)
             self.noter(m, "regroupement", cls, self.label(cls))
 
@@ -324,7 +364,13 @@ class _Construction:
             # lister, ou agrégat impossible faute de montant : on liste
             self.intention = "lister"
             colonnes = self.colonnes() + (" ?val" if self.val_lie else "")
-            select = f"SELECT DISTINCT {self.v} {colonnes} WHERE {{\n{self.corps()}\n}}\nORDER BY {self.v} LIMIT 200"
+            if self.liees:
+                # une ligne par ressource, les ressources liées réunies : "GAT Assurances, STAR Assurances"
+                liees = " ".join(f'(GROUP_CONCAT(DISTINCT {var}; separator=", ") AS ?{col})' for col, var, _ in self.liees)
+                select = (f"SELECT {self.v} {colonnes} {liees} WHERE {{\n{self.corps()}\n}}\n"
+                          f"GROUP BY {self.v} {colonnes}\nORDER BY {self.v} LIMIT 200")
+            else:
+                select = f"SELECT DISTINCT {self.v} {colonnes} WHERE {{\n{self.corps()}\n}}\nORDER BY {self.v} LIMIT 200"
         return select
 
     def colonnes(self):
@@ -353,7 +399,8 @@ class _Construction:
             "minimum": f"« {quoi} » avec « {attr} » le plus faible",
         }[self.intention]
         details = ([f"filtres : {' ; '.join(self.filtres)}"] if self.filtres else []) + \
-                  ([f"regroupé par {self.groupe}"] if self.groupe else [])
+                  ([f"regroupé par {self.groupe}"] if self.groupe else []) + \
+                  ([f"affiche : {', '.join(l for _, _, l in self.liees)}"] if self.liees else [])
         return debut + (" — " + ", ".join(details) if details else "")
 
 
@@ -370,4 +417,5 @@ def generer(lexique, analyse, intention):
         "filtres": c.filtres,
         "entites": c.entites,
         "avertissements": c.avertissements,
+        "liees": [(col, libelle) for col, _, libelle in c.liees],
     }

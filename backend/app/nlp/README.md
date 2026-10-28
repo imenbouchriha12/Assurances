@@ -52,14 +52,21 @@ SELECT (SUM(?val) AS ?total) WHERE {
   validité des contrats (« en cours », « expirés »), négations (« non couverts », « sans expert »)
 - **regroupements** : « par statut », « par type », « par ville », « par année », « par assureur »
 - **déductions du raisonneur** : « sinistres graves » (règle SWRL), « couverts » (classe définie)
+- **fautes de frappe** : un mot inconnu du modèle spaCy est remplacé par le mot du lexique le plus proche
+  (similarité ≥ 0,8 avec `difflib`) : « expprt » → « expert », « contart » → « contrat ». Les mots français
+  corrects ne sont jamais modifiés ; les corrections sont renvoyées dans `corrections` et affichées.
+- **ressources liées affichées** : « les experts et leur assureur », « donne le nom des experts et où ils
+  travaillent » (verbes de `synonymes.RELATIONS` → propriété `travaillePour`) ajoutent une colonne au résultat
+  (« Karim Haddad · Assureur : GAT Assurances, STAR Assurances »)
 
 ## Évaluation
 
-- `GET /nlp/evaluation` : exactitude du classifieur d'intention en validation croisée à 5 plis (~85 % sur 95 exemples).
+- `GET /nlp/evaluation` : exactitude du classifieur d'intention en validation croisée à 5 plis (~86 % sur 98 exemples).
 - Batterie de 35 questions avec résultat attendu : 35/35 correctes (intention et résultats).
 
 ## Limites connues
 
-- Le vocabulaire est celui de l'ontologie et de `synonymes.py` : un mot inconnu (« bagnole ») n'est pas reconnu.
+- Le vocabulaire est celui de l'ontologie et de `synonymes.py` (registre familier compris : « bagnole »,
+  « réclamations », « adhérents », « bossent », « périmé »…) ; un synonyme absent des deux n'est pas reconnu.
 - Une seule classe principale par question ; pas de questions imbriquées (« les assurés dont tous les sinistres… »).
 - Les mois (« en mars ») ne sont pas gérés, seulement les années et les dates complètes (JJ/MM/AAAA).

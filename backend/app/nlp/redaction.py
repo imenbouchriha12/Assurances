@@ -76,7 +76,7 @@ class Redacteur:
             self._formes[label] = (label[:1].lower() + label[1:], pluriel[:1].lower() + pluriel[1:], feminin)
         return self._formes[label]
 
-    def element(self, aff, ligne, variable, attribut):
+    def element(self, aff, ligne, variable, attribut, liees=()):
         """Une ligne de résultat sous forme lisible : titre + détails (+ valeur)."""
         l, d = ligne, []
         if aff == "Sinistre":
@@ -107,6 +107,7 @@ class Redacteur:
             d = [f"taux {round(l['taux'] * 100)} %" if l.get("taux") is not None else None]
         else:
             titre = montant(l["montant"]) if l.get("montant") is not None else l.get(variable)
+        d += [f"{libelle} : {l[col]}" for col, libelle in liees if l.get(col)]
         element = {"id": l.get(variable), "titre": titre, "details": [x for x in d if x]}
         if "val" in l:
             element["valeur"] = valeur_attribut(attribut, l["val"])
@@ -158,7 +159,7 @@ class Redacteur:
             for l in lignes:
                 if l.get(colonnes[0]) not in vus:
                     vus.add(l.get(colonnes[0]))
-                    elements.append(self.element(aff, l, colonnes[0], attribut))
+                    elements.append(self.element(aff, l, colonnes[0], attribut, interpretation.get("liees", ())))
             n = len(elements)
             texte = (f"Je n'ai trouvé aucun{e} {singulier} correspondant{e} à ces critères." if n == 0
                      else f"J'ai trouvé {n} {singulier if n == 1 else pluriel} :")

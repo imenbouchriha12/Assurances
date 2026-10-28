@@ -123,6 +123,11 @@ SELECT ?p ?d ?r WHERE { ?p a owl:ObjectProperty ; rdfs:domain ?d ; rdfs:range ?r
         lex.aretes.append((p, d, r))
         lex.noeuds.update((d, r))
     lex.aretes.sort()
+    for p, label in _valeurs("SELECT ?p ?l WHERE { ?p a owl:ObjectProperty ; rdfs:label ?l }", "p", "l"):
+        lex.labels[p] = label
+    for p, mots in syn.RELATIONS.items():
+        for mot in mots:
+            lex.ajouter(mot, Entree("relation", p, libelle=lex.labels.get(p, p)))
 
     # Propriétés de données : labels, domaines (y compris owl:unionOf), attributs numériques
     for p, label in _valeurs("SELECT ?p ?l WHERE { ?p a owl:DatatypeProperty ; rdfs:label ?l }", "p", "l"):

@@ -55,6 +55,7 @@ def repondre(question):
         "question": question,
         # Réponse rédigée pour l'utilisateur
         **_etat["redacteur"].rediger(interpretation, colonnes, lignes),
+        "corrections": analyse.corrections,
         # Détails techniques (documentation de l'API, démonstration) : non affichés dans l'interface
         "intention": {"predite": intention, "appliquee": interpretation["intention"], "confiance": confiance},
         "explication": interpretation["explication"],

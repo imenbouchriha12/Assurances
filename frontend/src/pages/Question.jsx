@@ -39,6 +39,11 @@ function Reponse({ r }) {
   const visibles = tout ? r.elements : r.elements.slice(0, AFFICHES);
   return (
     <>
+      {r.corrections?.length > 0 && (
+        <p className="discret">
+          Mots corrigés : {r.corrections.map((c) => `« ${c.mot} » → « ${c.correction} »`).join(", ")}
+        </p>
+      )}
       <p className="reponse-texte">{r.reponse}</p>
       {r.criteres.length > 0 && (
         <div className="criteres" aria-label="Critères compris">

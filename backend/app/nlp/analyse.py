@@ -8,10 +8,13 @@
      ("contrats automobiles" et "contrat automobile" donnent le même motif) ;
   4. motifs de comparaison ("plus de 5000", "supérieure à 500", "entre 1000 et 3000") avec un second Matcher ;
   5. dates (années, dates complètes), négations ("non couverts") et regroupements ("par statut").
+Avant l'étape 3, les fautes de frappe sont corrigées : un mot inconnu du modèle spaCy est remplacé par
+le mot du lexique le plus proche ("expprt" -> "expert").
 """
 import re
 import unicodedata
 from dataclasses import dataclass, field
+from difflib import get_close_matches
 
 from spacy.matcher import Matcher
 from spacy.tokens import Token
@@ -68,6 +71,7 @@ class Analyse:
     dates: list = field(default_factory=list)
     cles: set = field(default_factory=set)               # lemmes sans accents de la question
     texte_delexicalise: str = ""                         # entrée du classifieur d'intention
+    corrections: list = field(default_factory=list)      # [{mot, correction}] fautes de frappe corrigées
 
 
 _NOMBRES = re.compile(r"(?<=\d)[\s  ](?=\d{3}\b)")
@@ -111,10 +115,14 @@ class Analyseur:
         self.lexique = lexique
         self.matcher = Matcher(nlp.vocab)
         self.entrees = {}
+        self.vocabulaire = {}  # mot sans accents -> mot du lexique (correction des fautes de frappe)
         # Chaque phrase du lexique passe par le même pipeline que la question
         groupes = {}
         textes = [p for p, _ in lexique.phrases]
         for (_, entree), doc in zip(lexique.phrases, nlp.pipe(textes, batch_size=128)):
+            for t in doc:
+                if t.is_alpha and len(t) >= 4:
+                    self.vocabulaire.setdefault(sans_accents(t.lower_), t.lower_)
             cle = tuple(tuple(t._.cles) for t in doc if not t.is_punct or t.text in ("'", "-"))
             if cle:
                 groupes.setdefault(cle, set()).add(entree)
@@ -127,11 +135,29 @@ class Analyseur:
         for operateur, motifs in _MOTIFS_COMPARAISON.items():
             self.comparateurs.add(operateur, motifs)
 
+    def corriger(self, doc):
+        """Fautes de frappe -> {indice du mot: correction}. Seuls les mots absents du modèle spaCy (is_oov)
+        et du lexique sont corrigés : un mot français correct n'est jamais remplacé."""
+        corrections = {}
+        for t in doc:
+            cle = sans_accents(t.lower_)
+            if t.is_alpha and len(t) >= 4 and t.is_oov and cle not in self.vocabulaire:
+                proches = get_close_matches(cle, self.vocabulaire, n=1, cutoff=0.8)
+                if proches:
+                    corrections[t.i] = self.vocabulaire[proches[0]]
+        return corrections
+
     def analyser(self, question):
         texte = _NOMBRES.sub("", question.replace("’", "'").strip())
         texte = _DATE_COMPLETE.sub(lambda m: f"{m[3]}-{int(m[2]):02d}-{int(m[1]):02d}", texte)
         doc = self.nlp(texte)
+        corrections = self.corriger(doc)
+        if corrections:
+            texte = "".join(corrections[t.i] + t.whitespace_ if t.i in corrections else t.text_with_ws for t in doc)
         a = Analyse(question=question)
+        a.corrections = [{"mot": doc[i].text, "correction": c} for i, c in corrections.items()]
+        if corrections:
+            doc = self.nlp(texte)
         a.tokens = [{"texte": t.text, "lemme": t.lemma_, "pos": t.pos_} for t in doc]
         a.entites_nommees = [{"texte": e.text, "type": e.label_} for e in doc.ents]
         a.cles = {sans_accents(t.lemma_.lower()) for t in doc} | {sans_accents(t.lower_) for t in doc}

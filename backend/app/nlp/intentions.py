@@ -23,6 +23,8 @@ EXEMPLES = {
         "Sinistres entre 2024 et 2025", "Quelles sont les clauses obligatoires ?", "assurances vie",
         "Quel est le taux du barème auto 2024 ?", "Quelle est la prime du contrat CT-2026-002 ?",
         "Quel est le montant de la franchise du contrat CT-2025-006 ?",
+        "Donne-moi le nom des experts et où ils travaillent", "Les experts et leur assureur",
+        "Où travaille Leila ?",
     ],
     "compter": [
         "Combien de sinistres graves ?", "Combien de contrats a STAR ?", "Nombre de sinistres par statut",
