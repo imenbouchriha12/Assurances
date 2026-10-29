@@ -40,7 +40,7 @@ SELECT (SUM(?val) AS ?total) WHERE {
 ```
 
 6. **Rédaction de la réponse** (`redaction.py`) — génération par gabarits à partir des résultats :
-   « Le montant total indemnisé est de 3 500 DT. » L'accord en nombre et en genre utilise l'analyse
+   « Le montant total indemnisé est de 23 030 DT. » L'accord en nombre et en genre utilise l'analyse
    spaCy des labels (« 2 sinistres graves », « aucune garantie »). L'interface affiche cette phrase,
    les critères compris et les résultats ; la requête SPARQL reste disponible dans la réponse de l'API.
 

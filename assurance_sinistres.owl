@@ -789,6 +789,7 @@
         <proposeGarantie rdf:resource="#Garantie_Vol_Auto"/>
         <proposeGarantie rdf:resource="#Garantie_Deces"/>
         <definitBareme rdf:resource="#Bareme_Auto_2024"/>
+        <definitBareme rdf:resource="#Bareme_Auto_2026"/>
         <raisonSociale>STAR Assurances</raisonSociale>
         <adresse>Tunis</adresse>
     </owl:NamedIndividual>
@@ -822,6 +823,7 @@
         <aPourContrat rdf:resource="#Contrat_001"/>
         <aPourContrat rdf:resource="#Contrat_002"/>
         <declareSinistre rdf:resource="#Sinistre_2024_017"/>
+        <declareSinistre rdf:resource="#Sinistre_2026_027"/>
         <nom>Ben Salah</nom>
         <prenom>Amine</prenom>
         <cin>12345601</cin>
@@ -843,6 +845,7 @@
         <rdf:type rdf:resource="#Assure"/>
         <aPourContrat rdf:resource="#Contrat_004"/>
         <aPourContrat rdf:resource="#Contrat_007"/>
+        <declareSinistre rdf:resource="#Sinistre_2024_029"/>
         <declareSinistre rdf:resource="#Sinistre_2025_031"/>
         <declareSinistre rdf:resource="#Sinistre_2026_003"/>
         <nom>Gharbi</nom>
@@ -868,6 +871,113 @@
         <prenom>Mehdi</prenom>
         <cin>12345605</cin>
         <adresse>Sfax</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assure_Rania">
+        <rdf:type rdf:resource="#Assure"/>
+        <aPourContrat rdf:resource="#Contrat_008"/>
+        <aPourContrat rdf:resource="#Contrat_009"/>
+        <declareSinistre rdf:resource="#Sinistre_2025_012"/>
+        <declareSinistre rdf:resource="#Sinistre_2026_005"/>
+        <nom>Ferchichi</nom>
+        <prenom>Rania</prenom>
+        <cin>12345606</cin>
+        <adresse>Sousse</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assure_Hamza">
+        <rdf:type rdf:resource="#Assure"/>
+        <aPourContrat rdf:resource="#Contrat_010"/>
+        <declareSinistre rdf:resource="#Sinistre_2026_016"/>
+        <nom>Dridi</nom>
+        <prenom>Hamza</prenom>
+        <cin>12345607</cin>
+        <adresse>Bizerte</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assure_Salma">
+        <rdf:type rdf:resource="#Assure"/>
+        <aPourContrat rdf:resource="#Contrat_011"/>
+        <declareSinistre rdf:resource="#Sinistre_2025_019"/>
+        <declareSinistre rdf:resource="#Sinistre_2026_030"/>
+        <nom>Karray</nom>
+        <prenom>Salma</prenom>
+        <cin>12345608</cin>
+        <adresse>Sfax</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assure_Walid">
+        <rdf:type rdf:resource="#Assure"/>
+        <aPourContrat rdf:resource="#Contrat_012"/>
+        <declareSinistre rdf:resource="#Sinistre_2026_021"/>
+        <nom>Mejri</nom>
+        <prenom>Walid</prenom>
+        <cin>12345609</cin>
+        <adresse>Monastir</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assure_Nour">
+        <rdf:type rdf:resource="#Assure"/>
+        <aPourContrat rdf:resource="#Contrat_013"/>
+        <declareSinistre rdf:resource="#Sinistre_2025_067"/>
+        <nom>Hammami</nom>
+        <prenom>Nour</prenom>
+        <cin>12345610</cin>
+        <adresse>Tunis</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assure_Omar">
+        <rdf:type rdf:resource="#Assure"/>
+        <aPourContrat rdf:resource="#Contrat_014"/>
+        <aPourContrat rdf:resource="#Contrat_015"/>
+        <declareSinistre rdf:resource="#Sinistre_2025_064"/>
+        <nom>Belhadj</nom>
+        <prenom>Omar</prenom>
+        <cin>12345621</cin>
+        <adresse>Kairouan</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assure_Fatma">
+        <rdf:type rdf:resource="#Assure"/>
+        <aPourContrat rdf:resource="#Contrat_016"/>
+        <declareSinistre rdf:resource="#Sinistre_2026_008"/>
+        <nom>Saidi</nom>
+        <prenom>Fatma</prenom>
+        <cin>12345622</cin>
+        <adresse>Nabeul</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assure_Skander">
+        <rdf:type rdf:resource="#Assure"/>
+        <aPourContrat rdf:resource="#Contrat_017"/>
+        <declareSinistre rdf:resource="#Sinistre_2025_047"/>
+        <nom>Jebali</nom>
+        <prenom>Skander</prenom>
+        <cin>12345623</cin>
+        <adresse>Ariana</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assure_Meriem">
+        <rdf:type rdf:resource="#Assure"/>
+        <aPourContrat rdf:resource="#Contrat_018"/>
+        <aPourContrat rdf:resource="#Contrat_019"/>
+        <declareSinistre rdf:resource="#Sinistre_2025_055"/>
+        <declareSinistre rdf:resource="#Sinistre_2026_014"/>
+        <declareSinistre rdf:resource="#Sinistre_2026_036"/>
+        <nom>Toumi</nom>
+        <prenom>Meriem</prenom>
+        <cin>12345624</cin>
+        <adresse>Sousse</adresse>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Assure_Aymen">
+        <rdf:type rdf:resource="#Assure"/>
+        <aPourContrat rdf:resource="#Contrat_020"/>
+        <declareSinistre rdf:resource="#Sinistre_2026_034"/>
+        <nom>Khelifi</nom>
+        <prenom>Aymen</prenom>
+        <cin>12345625</cin>
+        <adresse>Tunis</adresse>
     </owl:NamedIndividual>
 
     <!-- ===== Experts ===== -->
@@ -900,6 +1010,36 @@
         <prenom>Nabil</prenom>
         <cin>12345613</cin>
         <adresse>Tunis</adresse>
+        <specialite>Médical</specialite>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Expert_Sami">
+        <rdf:type rdf:resource="#Expert"/>
+        <travaillePour rdf:resource="#Assureur_STAR"/>
+        <nom>Ouertani</nom>
+        <prenom>Sami</prenom>
+        <cin>12345614</cin>
+        <adresse>Sfax</adresse>
+        <specialite>Automobile</specialite>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Expert_Olfa">
+        <rdf:type rdf:resource="#Expert"/>
+        <travaillePour rdf:resource="#Assureur_COMAR"/>
+        <nom>Rekik</nom>
+        <prenom>Olfa</prenom>
+        <cin>12345615</cin>
+        <adresse>Tunis</adresse>
+        <specialite>Bâtiment</specialite>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Expert_Hela">
+        <rdf:type rdf:resource="#Expert"/>
+        <travaillePour rdf:resource="#Assureur_GAT"/>
+        <nom>Mabrouk</nom>
+        <prenom>Hela</prenom>
+        <cin>12345616</cin>
+        <adresse>Sousse</adresse>
         <specialite>Médical</specialite>
     </owl:NamedIndividual>
 
@@ -1006,6 +1146,14 @@
         <sAppliqueA rdf:resource="#Garantie_FraisMedicaux"/>
         <libelleBareme>Barème frais médicaux 2026</libelleBareme>
         <tauxIndemnisation rdf:datatype="&xsd;float">0.7</tauxIndemnisation>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Bareme_Auto_2026">
+        <rdf:type rdf:resource="#BaremeIndemnisation"/>
+        <sAppliqueA rdf:resource="#Garantie_RC_Auto"/>
+        <sAppliqueA rdf:resource="#Garantie_Vol_Auto"/>
+        <libelleBareme>Barème dommages matériels automobile 2026</libelleBareme>
+        <tauxIndemnisation rdf:datatype="&xsd;float">0.85</tauxIndemnisation>
     </owl:NamedIndividual>
 
     <!-- ===== Clauses légales : obligations ===== -->
@@ -1215,6 +1363,236 @@
         <estValide rdf:datatype="&xsd;boolean">false</estValide>
     </owl:NamedIndividual>
 
+    <owl:NamedIndividual rdf:about="#Contrat_008">
+        <rdf:type rdf:resource="#ContratAutomobile"/>
+        <assurePar rdf:resource="#Assureur_STAR"/>
+        <possedeGarantie rdf:resource="#Garantie_RC_Auto"/>
+        <possedeGarantie rdf:resource="#Garantie_Vol_Auto"/>
+        <appliqueFranchise rdf:resource="#Franchise_Auto_001"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_AssuranceObligatoireRC"/>
+        <contientClause rdf:resource="#Clause_Exclusion_FauteIntentionnelle"/>
+        <contientClause rdf:resource="#Clause_Exclusion_ClesSurVehicule"/>
+        <numeroContrat>CT-2025-008</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2025-07-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2026-06-30</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">460.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">false</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_009">
+        <rdf:type rdf:resource="#ContratSante"/>
+        <assurePar rdf:resource="#Assureur_GAT"/>
+        <possedeGarantie rdf:resource="#Garantie_FraisMedicaux"/>
+        <appliqueFranchise rdf:resource="#Franchise_Sante_001"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_Exclusion_MaladieAnterieure"/>
+        <numeroContrat>CT-2026-009</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2026-02-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2027-01-31</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">580.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">true</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_010">
+        <rdf:type rdf:resource="#ContratAutomobile"/>
+        <assurePar rdf:resource="#Assureur_GAT"/>
+        <possedeGarantie rdf:resource="#Garantie_RC_Auto"/>
+        <possedeGarantie rdf:resource="#Garantie_Vol_Auto"/>
+        <appliqueFranchise rdf:resource="#Franchise_Auto_002"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_AssuranceObligatoireRC"/>
+        <contientClause rdf:resource="#Clause_Exclusion_FauteIntentionnelle"/>
+        <contientClause rdf:resource="#Clause_Exclusion_ClesSurVehicule"/>
+        <numeroContrat>CT-2026-010</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2026-03-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2027-02-28</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">540.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">true</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_011">
+        <rdf:type rdf:resource="#ContratHabitation"/>
+        <assurePar rdf:resource="#Assureur_COMAR"/>
+        <possedeGarantie rdf:resource="#Garantie_Incendie_Hab"/>
+        <possedeGarantie rdf:resource="#Garantie_DegatsEaux_Hab"/>
+        <possedeGarantie rdf:resource="#Garantie_Vol_Hab"/>
+        <possedeGarantie rdf:resource="#Garantie_RC_Habitation"/>
+        <appliqueFranchise rdf:resource="#Franchise_Hab_001"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_Exclusion_Guerre"/>
+        <contientClause rdf:resource="#Clause_Exclusion_DefautEntretien"/>
+        <contientClause rdf:resource="#Clause_Exclusion_FauteIntentionnelle"/>
+        <numeroContrat>CT-2025-011</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2025-01-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2026-12-31</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">350.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">true</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_012">
+        <rdf:type rdf:resource="#ContratAutomobile"/>
+        <assurePar rdf:resource="#Assureur_STAR"/>
+        <possedeGarantie rdf:resource="#Garantie_RC_Auto"/>
+        <possedeGarantie rdf:resource="#Garantie_Vol_Auto"/>
+        <appliqueFranchise rdf:resource="#Franchise_Auto_001"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_AssuranceObligatoireRC"/>
+        <contientClause rdf:resource="#Clause_Exclusion_FauteIntentionnelle"/>
+        <contientClause rdf:resource="#Clause_Exclusion_ClesSurVehicule"/>
+        <numeroContrat>CT-2026-012</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2026-04-15</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2027-04-14</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">495.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">true</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_013">
+        <rdf:type rdf:resource="#ContratSante"/>
+        <assurePar rdf:resource="#Assureur_GAT"/>
+        <possedeGarantie rdf:resource="#Garantie_FraisMedicaux"/>
+        <appliqueFranchise rdf:resource="#Franchise_Sante_001"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_Exclusion_MaladieAnterieure"/>
+        <numeroContrat>CT-2025-013</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2025-09-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2026-08-31</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">640.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">false</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_014">
+        <rdf:type rdf:resource="#ContratVie"/>
+        <assurePar rdf:resource="#Assureur_STAR"/>
+        <possedeGarantie rdf:resource="#Garantie_Deces"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_Exclusion_Suicide"/>
+        <numeroContrat>CT-2022-014</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2022-01-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2041-12-31</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">950.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">true</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_015">
+        <rdf:type rdf:resource="#ContratAutomobile"/>
+        <assurePar rdf:resource="#Assureur_STAR"/>
+        <possedeGarantie rdf:resource="#Garantie_RC_Auto"/>
+        <possedeGarantie rdf:resource="#Garantie_Vol_Auto"/>
+        <appliqueFranchise rdf:resource="#Franchise_Auto_001"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_AssuranceObligatoireRC"/>
+        <contientClause rdf:resource="#Clause_Exclusion_FauteIntentionnelle"/>
+        <contientClause rdf:resource="#Clause_Exclusion_ClesSurVehicule"/>
+        <numeroContrat>CT-2025-015</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2025-02-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2026-01-31</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">470.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">false</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_016">
+        <rdf:type rdf:resource="#ContratHabitation"/>
+        <assurePar rdf:resource="#Assureur_COMAR"/>
+        <possedeGarantie rdf:resource="#Garantie_Incendie_Hab"/>
+        <possedeGarantie rdf:resource="#Garantie_Vol_Hab"/>
+        <possedeGarantie rdf:resource="#Garantie_RC_Habitation"/>
+        <appliqueFranchise rdf:resource="#Franchise_Hab_001"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_Exclusion_Guerre"/>
+        <contientClause rdf:resource="#Clause_Exclusion_FauteIntentionnelle"/>
+        <numeroContrat>CT-2026-016</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2026-01-10</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2027-01-09</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">300.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">true</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_017">
+        <rdf:type rdf:resource="#ContratAutomobile"/>
+        <assurePar rdf:resource="#Assureur_GAT"/>
+        <possedeGarantie rdf:resource="#Garantie_RC_Auto"/>
+        <appliqueFranchise rdf:resource="#Franchise_Auto_002"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_AssuranceObligatoireRC"/>
+        <contientClause rdf:resource="#Clause_Exclusion_FauteIntentionnelle"/>
+        <numeroContrat>CT-2024-017</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2024-11-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2025-10-31</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">430.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">false</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_018">
+        <rdf:type rdf:resource="#ContratSante"/>
+        <assurePar rdf:resource="#Assureur_GAT"/>
+        <possedeGarantie rdf:resource="#Garantie_FraisMedicaux"/>
+        <appliqueFranchise rdf:resource="#Franchise_Sante_001"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_Exclusion_MaladieAnterieure"/>
+        <numeroContrat>CT-2026-018</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2026-01-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2026-12-31</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">610.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">true</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_019">
+        <rdf:type rdf:resource="#ContratHabitation"/>
+        <assurePar rdf:resource="#Assureur_COMAR"/>
+        <possedeGarantie rdf:resource="#Garantie_Incendie_Hab"/>
+        <possedeGarantie rdf:resource="#Garantie_DegatsEaux_Hab"/>
+        <appliqueFranchise rdf:resource="#Franchise_Hab_001"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_Exclusion_Guerre"/>
+        <contientClause rdf:resource="#Clause_Exclusion_DefautEntretien"/>
+        <numeroContrat>CT-2024-019</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2024-06-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2026-05-31</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">290.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">false</estValide>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Contrat_020">
+        <rdf:type rdf:resource="#ContratAutomobile"/>
+        <assurePar rdf:resource="#Assureur_STAR"/>
+        <possedeGarantie rdf:resource="#Garantie_RC_Auto"/>
+        <appliqueFranchise rdf:resource="#Franchise_Auto_001"/>
+        <contientClause rdf:resource="#Clause_DeclarationRisque"/>
+        <contientClause rdf:resource="#Clause_PaiementPrime"/>
+        <contientClause rdf:resource="#Clause_DeclarationSinistre"/>
+        <contientClause rdf:resource="#Clause_AssuranceObligatoireRC"/>
+        <contientClause rdf:resource="#Clause_Exclusion_FauteIntentionnelle"/>
+        <numeroContrat>CT-2026-020</numeroContrat>
+        <dateDebutContrat rdf:datatype="&xsd;date">2026-06-01</dateDebutContrat>
+        <dateFinContrat rdf:datatype="&xsd;date">2027-05-31</dateFinContrat>
+        <montantPrime rdf:datatype="&xsd;float">410.0</montantPrime>
+        <estValide rdf:datatype="&xsd;boolean">true</estValide>
+    </owl:NamedIndividual>
+
     <!-- ===== Sinistres ===== -->
 
     <owl:NamedIndividual rdf:about="#Sinistre_2024_017">
@@ -1292,6 +1670,206 @@
         <statutSinistre>Declare</statutSinistre>
     </owl:NamedIndividual>
 
+    <owl:NamedIndividual rdf:about="#Sinistre_2024_029">
+        <rdf:type rdf:resource="#SinistreHabitation"/>
+        <concerneContrat rdf:resource="#Contrat_007"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_029"/>
+        <estCouvertPar rdf:resource="#Garantie_DegatsEaux_Hab"/>
+        <estExpertisePar rdf:resource="#Expert_Leila"/>
+        <estIndemnisePar rdf:resource="#Indemnisation_029"/>
+        <dateSinistre rdf:datatype="&xsd;date">2024-12-08</dateSinistre>
+        <descriptionSinistre>Fuite de la machine à laver, cuisine inondée</descriptionSinistre>
+        <lieuSinistre>Ariana</lieuSinistre>
+        <statutSinistre>Indemnise</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2025_012">
+        <rdf:type rdf:resource="#SinistreAutomobile"/>
+        <concerneContrat rdf:resource="#Contrat_008"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_012"/>
+        <estCouvertPar rdf:resource="#Garantie_RC_Auto"/>
+        <estExpertisePar rdf:resource="#Expert_Karim"/>
+        <estIndemnisePar rdf:resource="#Indemnisation_012"/>
+        <dateSinistre rdf:datatype="&xsd;date">2025-10-05</dateSinistre>
+        <descriptionSinistre>Accrochage en stationnement avec un véhicule garé</descriptionSinistre>
+        <lieuSinistre>Sousse</lieuSinistre>
+        <statutSinistre>Indemnise</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2025_019">
+        <rdf:type rdf:resource="#SinistreHabitation"/>
+        <concerneContrat rdf:resource="#Contrat_011"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_019"/>
+        <estCouvertPar rdf:resource="#Garantie_DegatsEaux_Hab"/>
+        <estExpertisePar rdf:resource="#Expert_Leila"/>
+        <estIndemnisePar rdf:resource="#Indemnisation_019"/>
+        <dateSinistre rdf:datatype="&xsd;date">2025-02-22</dateSinistre>
+        <descriptionSinistre>Fuite du chauffe-eau dans la salle de bain</descriptionSinistre>
+        <lieuSinistre>Sfax</lieuSinistre>
+        <statutSinistre>Indemnise</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2025_047">
+        <rdf:type rdf:resource="#SinistreAutomobile"/>
+        <concerneContrat rdf:resource="#Contrat_017"/>
+        <causeDommage rdf:resource="#Dommage_Corporel_047"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_047"/>
+        <estCouvertPar rdf:resource="#Garantie_RC_Auto"/>
+        <estExpertisePar rdf:resource="#Expert_Karim"/>
+        <estIndemnisePar rdf:resource="#Indemnisation_047"/>
+        <dateSinistre rdf:datatype="&xsd;date">2025-03-12</dateSinistre>
+        <descriptionSinistre>Collision arrière à un feu rouge, passager du véhicule tiers blessé</descriptionSinistre>
+        <lieuSinistre>Ariana</lieuSinistre>
+        <statutSinistre>Indemnise</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2025_055">
+        <rdf:type rdf:resource="#SinistreHabitation"/>
+        <concerneContrat rdf:resource="#Contrat_019"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_055"/>
+        <estExpertisePar rdf:resource="#Expert_Leila"/>
+        <dateSinistre rdf:datatype="&xsd;date">2025-07-19</dateSinistre>
+        <descriptionSinistre>Cambriolage de l'appartement, bijoux volés (refusé : le contrat ne comprend pas la garantie vol)</descriptionSinistre>
+        <lieuSinistre>Sousse</lieuSinistre>
+        <statutSinistre>Refuse</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2025_064">
+        <rdf:type rdf:resource="#SinistreAutomobile"/>
+        <concerneContrat rdf:resource="#Contrat_015"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_064"/>
+        <estCouvertPar rdf:resource="#Garantie_Vol_Auto"/>
+        <estExpertisePar rdf:resource="#Expert_Karim"/>
+        <dateSinistre rdf:datatype="&xsd;date">2025-12-20</dateSinistre>
+        <descriptionSinistre>Vol du véhicule stationné devant le domicile (refusé : clés laissées sur le contact, clause d'exclusion)</descriptionSinistre>
+        <lieuSinistre>Kairouan</lieuSinistre>
+        <statutSinistre>Refuse</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2025_067">
+        <rdf:type rdf:resource="#SinistreSante"/>
+        <concerneContrat rdf:resource="#Contrat_013"/>
+        <causeDommage rdf:resource="#Dommage_Corporel_067"/>
+        <estExpertisePar rdf:resource="#Expert_Nabil"/>
+        <dateSinistre rdf:datatype="&xsd;date">2025-11-27</dateSinistre>
+        <descriptionSinistre>Hospitalisation pour une maladie antérieure non déclarée (refusé : clause d'exclusion)</descriptionSinistre>
+        <lieuSinistre>Tunis</lieuSinistre>
+        <statutSinistre>Refuse</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2026_005">
+        <rdf:type rdf:resource="#SinistreSante"/>
+        <concerneContrat rdf:resource="#Contrat_009"/>
+        <causeDommage rdf:resource="#Dommage_Corporel_005"/>
+        <estCouvertPar rdf:resource="#Garantie_FraisMedicaux"/>
+        <estExpertisePar rdf:resource="#Expert_Hela"/>
+        <estIndemnisePar rdf:resource="#Indemnisation_005"/>
+        <dateSinistre rdf:datatype="&xsd;date">2026-03-09</dateSinistre>
+        <descriptionSinistre>Fracture du poignet après une chute dans l'escalier</descriptionSinistre>
+        <lieuSinistre>Sousse</lieuSinistre>
+        <statutSinistre>Indemnise</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2026_008">
+        <rdf:type rdf:resource="#SinistreHabitation"/>
+        <concerneContrat rdf:resource="#Contrat_016"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_008"/>
+        <estCouvertPar rdf:resource="#Garantie_Vol_Hab"/>
+        <estExpertisePar rdf:resource="#Expert_Olfa"/>
+        <estIndemnisePar rdf:resource="#Indemnisation_008"/>
+        <dateSinistre rdf:datatype="&xsd;date">2026-03-30</dateSinistre>
+        <descriptionSinistre>Cambriolage de la maison, porte d'entrée forcée</descriptionSinistre>
+        <lieuSinistre>Nabeul</lieuSinistre>
+        <statutSinistre>Indemnise</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2026_014">
+        <rdf:type rdf:resource="#SinistreSante"/>
+        <concerneContrat rdf:resource="#Contrat_018"/>
+        <causeDommage rdf:resource="#Dommage_Corporel_014"/>
+        <estCouvertPar rdf:resource="#Garantie_FraisMedicaux"/>
+        <dateSinistre rdf:datatype="&xsd;date">2026-06-23</dateSinistre>
+        <descriptionSinistre>Consultation aux urgences pour une crise d'allergie</descriptionSinistre>
+        <lieuSinistre>Sousse</lieuSinistre>
+        <statutSinistre>Declare</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2026_016">
+        <rdf:type rdf:resource="#SinistreAutomobile"/>
+        <concerneContrat rdf:resource="#Contrat_010"/>
+        <causeDommage rdf:resource="#Dommage_Corporel_016"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_016"/>
+        <estCouvertPar rdf:resource="#Garantie_RC_Auto"/>
+        <estExpertisePar rdf:resource="#Expert_Karim"/>
+        <dateSinistre rdf:datatype="&xsd;date">2026-05-18</dateSinistre>
+        <descriptionSinistre>Collision avec un cyclomoteur à un carrefour, conducteur du cyclomoteur blessé</descriptionSinistre>
+        <lieuSinistre>Bizerte</lieuSinistre>
+        <statutSinistre>EnExpertise</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2026_021">
+        <rdf:type rdf:resource="#SinistreAutomobile"/>
+        <concerneContrat rdf:resource="#Contrat_012"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_021"/>
+        <estCouvertPar rdf:resource="#Garantie_Vol_Auto"/>
+        <estExpertisePar rdf:resource="#Expert_Sami"/>
+        <estIndemnisePar rdf:resource="#Indemnisation_021"/>
+        <dateSinistre rdf:datatype="&xsd;date">2026-07-02</dateSinistre>
+        <descriptionSinistre>Vol du véhicule sur le parking d'un centre commercial</descriptionSinistre>
+        <lieuSinistre>Monastir</lieuSinistre>
+        <statutSinistre>Indemnise</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2026_027">
+        <rdf:type rdf:resource="#SinistreAutomobile"/>
+        <concerneContrat rdf:resource="#Contrat_002"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_027"/>
+        <estCouvertPar rdf:resource="#Garantie_RC_Auto"/>
+        <estExpertisePar rdf:resource="#Expert_Sami"/>
+        <dateSinistre rdf:datatype="&xsd;date">2026-09-14</dateSinistre>
+        <descriptionSinistre>Accrochage avec un taxi en sortie de parking</descriptionSinistre>
+        <lieuSinistre>Tunis</lieuSinistre>
+        <statutSinistre>EnExpertise</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2026_030">
+        <rdf:type rdf:resource="#SinistreHabitation"/>
+        <concerneContrat rdf:resource="#Contrat_011"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_030"/>
+        <causeDommage rdf:resource="#Dommage_Corporel_030"/>
+        <causeDommage rdf:resource="#Dommage_Immateriel_030"/>
+        <estCouvertPar rdf:resource="#Garantie_Incendie_Hab"/>
+        <estExpertisePar rdf:resource="#Expert_Leila"/>
+        <dateSinistre rdf:datatype="&xsd;date">2026-09-03</dateSinistre>
+        <descriptionSinistre>Incendie d'une chambre provoqué par une multiprise surchargée, occupante intoxiquée</descriptionSinistre>
+        <lieuSinistre>Sfax</lieuSinistre>
+        <statutSinistre>EnExpertise</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2026_034">
+        <rdf:type rdf:resource="#SinistreAutomobile"/>
+        <concerneContrat rdf:resource="#Contrat_020"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_034"/>
+        <estCouvertPar rdf:resource="#Garantie_RC_Auto"/>
+        <dateSinistre rdf:datatype="&xsd;date">2026-10-20</dateSinistre>
+        <descriptionSinistre>Choc arrière dans un embouteillage</descriptionSinistre>
+        <lieuSinistre>Tunis</lieuSinistre>
+        <statutSinistre>Declare</statutSinistre>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Sinistre_2026_036">
+        <rdf:type rdf:resource="#SinistreHabitation"/>
+        <concerneContrat rdf:resource="#Contrat_019"/>
+        <causeDommage rdf:resource="#Dommage_Materiel_036"/>
+        <estCouvertPar rdf:resource="#Garantie_DegatsEaux_Hab"/>
+        <estExpertisePar rdf:resource="#Expert_Olfa"/>
+        <estIndemnisePar rdf:resource="#Indemnisation_036"/>
+        <dateSinistre rdf:datatype="&xsd;date">2026-04-11</dateSinistre>
+        <descriptionSinistre>Infiltration d'eau par la toiture après un orage</descriptionSinistre>
+        <lieuSinistre>Sousse</lieuSinistre>
+        <statutSinistre>Cloture</statutSinistre>
+    </owl:NamedIndividual>
+
     <!-- ===== Dommages ===== -->
 
     <owl:NamedIndividual rdf:about="#Dommage_Materiel_017">
@@ -1342,6 +1920,126 @@
         <montantEstime rdf:datatype="&xsd;float">5400.0</montantEstime>
     </owl:NamedIndividual>
 
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_029">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Meubles de cuisine et électroménager endommagés par l'eau</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">3100.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_012">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Rétroviseur et portière du véhicule tiers endommagés</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">1450.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_019">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Parquet du salon et cloison endommagés</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">3600.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Corporel_047">
+        <rdf:type rdf:resource="#DommageCorporel"/>
+        <descriptionDommage>Entorse cervicale du passager, soins et arrêt de travail</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">6200.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_047">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Coffre et pare-chocs arrière du véhicule tiers</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">2300.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_055">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Bijoux et montre volés</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">3900.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_064">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Véhicule volé, valeur à dire d'expert</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">18500.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Corporel_067">
+        <rdf:type rdf:resource="#DommageCorporel"/>
+        <descriptionDommage>Frais d'hospitalisation de cinq jours</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">5200.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Corporel_005">
+        <rdf:type rdf:resource="#DommageCorporel"/>
+        <descriptionDommage>Plâtre, radiographies et séances de rééducation</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">1800.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_008">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Téléviseur, ordinateur portable et porte d'entrée</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">4200.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Corporel_014">
+        <rdf:type rdf:resource="#DommageCorporel"/>
+        <descriptionDommage>Consultation, examens et médicaments</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">420.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Corporel_016">
+        <rdf:type rdf:resource="#DommageCorporel"/>
+        <descriptionDommage>Fracture de la jambe du conducteur du cyclomoteur</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">4800.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_016">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Cyclomoteur endommagé</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">900.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_021">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Véhicule volé, non retrouvé</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">22000.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_027">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Aile et portière du taxi endommagées</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">1900.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_030">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Chambre et mobilier détruits</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">9800.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Corporel_030">
+        <rdf:type rdf:resource="#DommageCorporel"/>
+        <descriptionDommage>Soins pour intoxication à la fumée</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">2500.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Immateriel_030">
+        <rdf:type rdf:resource="#DommageImmateriel"/>
+        <descriptionDommage>Frais de relogement pendant les travaux</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">1800.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_034">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Feu arrière et pare-chocs du véhicule tiers</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">1250.0</montantEstime>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Dommage_Materiel_036">
+        <rdf:type rdf:resource="#DommageMateriel"/>
+        <descriptionDommage>Plafond de la chambre et peintures abîmés</descriptionDommage>
+        <montantEstime rdf:datatype="&xsd;float">2700.0</montantEstime>
+    </owl:NamedIndividual>
+
     <!-- ===== Indemnisations : (dommages - franchise) x taux du barème ===== -->
 
     <owl:NamedIndividual rdf:about="#Indemnisation_017">
@@ -1363,6 +2061,62 @@
         <suitBareme rdf:resource="#Bareme_Sante_2026"/>
         <montantIndemnisation rdf:datatype="&xsd;float">1645.0</montantIndemnisation>
         <dateIndemnisation rdf:datatype="&xsd;date">2026-03-10</dateIndemnisation>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Indemnisation_005">
+        <rdf:type rdf:resource="#Indemnisation"/>
+        <suitBareme rdf:resource="#Bareme_Sante_2026"/>
+        <montantIndemnisation rdf:datatype="&xsd;float">1225.0</montantIndemnisation>
+        <dateIndemnisation rdf:datatype="&xsd;date">2026-04-02</dateIndemnisation>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Indemnisation_008">
+        <rdf:type rdf:resource="#Indemnisation"/>
+        <suitBareme rdf:resource="#Bareme_Habitation_2025"/>
+        <montantIndemnisation rdf:datatype="&xsd;float">3645.0</montantIndemnisation>
+        <dateIndemnisation rdf:datatype="&xsd;date">2026-05-04</dateIndemnisation>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Indemnisation_012">
+        <rdf:type rdf:resource="#Indemnisation"/>
+        <suitBareme rdf:resource="#Bareme_Auto_2024"/>
+        <montantIndemnisation rdf:datatype="&xsd;float">1000.0</montantIndemnisation>
+        <dateIndemnisation rdf:datatype="&xsd;date">2025-11-02</dateIndemnisation>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Indemnisation_019">
+        <rdf:type rdf:resource="#Indemnisation"/>
+        <suitBareme rdf:resource="#Bareme_Habitation_2025"/>
+        <montantIndemnisation rdf:datatype="&xsd;float">3105.0</montantIndemnisation>
+        <dateIndemnisation rdf:datatype="&xsd;date">2025-03-28</dateIndemnisation>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Indemnisation_021">
+        <rdf:type rdf:resource="#Indemnisation"/>
+        <suitBareme rdf:resource="#Bareme_Auto_2026"/>
+        <montantIndemnisation rdf:datatype="&xsd;float">18530.0</montantIndemnisation>
+        <dateIndemnisation rdf:datatype="&xsd;date">2026-08-10</dateIndemnisation>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Indemnisation_029">
+        <rdf:type rdf:resource="#Indemnisation"/>
+        <suitBareme rdf:resource="#Bareme_Habitation_2025"/>
+        <montantIndemnisation rdf:datatype="&xsd;float">2655.0</montantIndemnisation>
+        <dateIndemnisation rdf:datatype="&xsd;date">2025-01-20</dateIndemnisation>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Indemnisation_036">
+        <rdf:type rdf:resource="#Indemnisation"/>
+        <suitBareme rdf:resource="#Bareme_Habitation_2025"/>
+        <montantIndemnisation rdf:datatype="&xsd;float">2295.0</montantIndemnisation>
+        <dateIndemnisation rdf:datatype="&xsd;date">2026-05-20</dateIndemnisation>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Indemnisation_047">
+        <rdf:type rdf:resource="#Indemnisation"/>
+        <suitBareme rdf:resource="#Bareme_Corporel_2025"/>
+        <montantIndemnisation rdf:datatype="&xsd;float">8200.0</montantIndemnisation>
+        <dateIndemnisation rdf:datatype="&xsd;date">2025-05-06</dateIndemnisation>
     </owl:NamedIndividual>
 
 

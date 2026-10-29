@@ -23,6 +23,8 @@ FORMULES = {
     "tauxIndemnisation": ("la somme des taux", "le taux moyen", "le taux le plus élevé", "le taux le plus faible"),
 }
 _RANG = {"somme": 0, "moyenne": 1, "maximum": 2, "minimum": 3}
+# Noms employés en complément que le modèle étiquette à tort comme adjectifs ("contrat santé")
+NOMS_COMPLEMENTS = {"santé"}
 
 
 def nombre_fr(v, decimales=2):
@@ -66,7 +68,7 @@ class Redacteur:
             doc = self.nlp(label)
             mots, accorder = [], True
             for i, t in enumerate(doc):
-                if i == 0 or (accorder and t.pos_ in ("ADJ", "VERB")):
+                if i == 0 or (accorder and t.pos_ in ("ADJ", "VERB") and t.lower_ not in NOMS_COMPLEMENTS):
                     mots.append(_pluriel_mot(t.text) + t.whitespace_)
                 else:
                     accorder = False
