@@ -1,7 +1,9 @@
 import os
 from pathlib import Path
 
-FUSEKI_URL = os.getenv("FUSEKI_URL", "http://localhost:3030/assurance")
+# 127.0.0.1 et non localhost : Fuseki n'écoute qu'en IPv4, et sous Windows chaque connexion tentée d'abord
+# sur ::1 attend ~2 s le refus avant de basculer (SPARQLWrapper ouvre une connexion par requête)
+FUSEKI_URL = os.getenv("FUSEKI_URL", "http://127.0.0.1:3030/assurance")
 QUERY_ENDPOINT = f"{FUSEKI_URL}/sparql"
 UPDATE_ENDPOINT = f"{FUSEKI_URL}/update"
 DATA_ENDPOINT = f"{FUSEKI_URL}/data"  # Graph Store Protocol : lecture/écriture du graphe entier
