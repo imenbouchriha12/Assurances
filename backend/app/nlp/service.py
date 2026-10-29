@@ -39,6 +39,14 @@ def _preparer():
                      redacteur=Redacteur(_etat["nlp"], lexique), signature=signature)
 
 
+def prechauffer():
+    """Préparation lancée au démarrage de l'API : la première question n'attend pas le chargement de spaCy."""
+    try:
+        _preparer()
+    except HTTPException:
+        pass  # Fuseki pas encore lancé : la préparation se fera à la première question
+
+
 def repondre(question):
     debut = time.perf_counter()
     _preparer()

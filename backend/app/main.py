@@ -1,15 +1,28 @@
+import threading
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .config import FUSEKI_URL
+from .nlp import service
 from .routers import assures, contrats, nlp, recherche, referentiel, sinistres
 from .sparql import select
+
+
+@asynccontextmanager
+async def demarrage(_app):
+    # Module NLP préparé en arrière-plan : l'API répond tout de suite, la première question n'attend pas ~8 s
+    threading.Thread(target=service.prechauffer, daemon=True).start()
+    yield
+
 
 app = FastAPI(
     title="API Assurance et Gestion des Sinistres",
     description="Back-end du projet Web Sémantique : interroge l'ontologie stockée dans Apache Jena Fuseki "
                 "via SPARQL (lecture, CRUD, filtres, recherche, raisonnement Pellet).",
     version="1.0.0",
+    lifespan=demarrage,
 )
 
 # Le front-end (autre port) appelle l'API depuis le navigateur
